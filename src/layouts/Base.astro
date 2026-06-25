@@ -1,0 +1,138 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Campbell India | Luxury Hospitality',
+  description = 'Campbell India is a luxury hospitality house redefining dining and nightlife — blending global sophistication with Indian warmth. Home to Cosy Box, Toy Room, Ophelia, Meette, Louve and the Royal House of Patiala.',
+} = Astro.props;
+
+// Formspree endpoint id — set PUBLIC_FORMSPREE_ID in your env / Vercel project.
+// Until it's set, forms validate + show a friendly "not configured yet" notice.
+const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_ID || '';
+---
+
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Campbell India" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Formspree endpoint id (empty until configured) -->
+    <meta name="formspree-id" content={FORMSPREE_ID} />
+
+    <!-- No-JS / crawler fallback: never hide scroll-reveal content when JS is off -->
+    <noscript>
+      <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-background text-on-background font-body-lg antialiased overflow-x-hidden selection:bg-secondary selection:text-on-secondary"
+  >
+    <Nav />
+    <slot />
+    <Footer />
+
+    <!-- Shared form handler: progressive-enhancement AJAX submit to Formspree -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const id = document.querySelector('meta[name="formspree-id"]')?.getAttribute('content') || '';
+        const endpoint = id ? `https://formspree.io/f/${id}` : '';
+
+        document.querySelectorAll('form[data-ajax]').forEach((form) => {
+          const note = document.createElement('p');
+          note.className = 'mt-4 text-label-caps uppercase tracking-widest text-secondary';
+          form.appendChild(note);
+
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+
+            if (!endpoint) {
+              note.textContent = 'Form delivery is not configured yet. Set PUBLIC_FORMSPREE_ID to enable.';
+              return;
+            }
+
+            const btn = form.querySelector('[type="submit"]');
+            const label = btn ? btn.textContent : '';
+            if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+            note.textContent = '';
+
+            try {
+              const res = await fetch(endpoint, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' },
+              });
+              if (res.ok) {
+                form.reset();
+                note.textContent = 'Thank you — we will be in touch shortly.';
+              } else {
+                note.textContent = 'Something went wrong. Please call us or try again.';
+              }
+            } catch {
+              note.textContent = 'Network error. Please call us or try again.';
+            } finally {
+              if (btn) { btn.disabled = false; btn.textContent = label; }
+            }
+          });
+        });
+      });
+    </script>
+
+    <!-- Shared scroll-reveal + sticky-nav condensing -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+          const windowHeight = window.innerHeight;
+          const elementVisible = 150;
+          reveals.forEach((reveal) => {
+            const elementTop = reveal.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+              reveal.classList.add('active');
+            }
+          });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        const nav = document.getElementById('main-nav');
+        if (nav) {
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+              nav.classList.add('py-2');
+              nav.classList.remove('py-4');
+            } else {
+              nav.classList.add('py-4');
+              nav.classList.remove('py-2');
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,227 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Campbell India | Luxury Hospitality">
+<!-- Hero Section (Split-Screen Editorial) -->
+<header class="relative w-full h-screen min-h-[800px] flex items-center justify-center pt-20 overflow-hidden bg-background border-b border-secondary/20">
+<div class="w-full h-full flex flex-col md:flex-row">
+<!-- Image Side -->
+<div class="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transform scale-105" style="background-image: url('/images/hero.jpg'); filter: brightness(0.78);"></div>
+</div>
+<!-- Text Side -->
+<div class="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center p-8 md:p-16 lg:p-24 relative z-10 bg-background reveal active">
+<div class="max-w-xl text-left w-full">
+<span class="font-label-caps text-label-caps text-secondary mb-6 block tracking-[0.2em] uppercase">— Luxury Hospitality · Since 2019</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-8 leading-tight drop-shadow-2xl">
+                        Global sophistication,<br/>
+<span class="italic font-light text-secondary/80">Indian warmth</span>
+</h1>
+<div class="w-16 h-[1px] bg-secondary mb-8"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                        A house of distinguished dining and nightlife brands, operating at the forefront of India's evolving luxury landscape — across Delhi, Mumbai, Kolkata, Pune and Gurugram.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center gap-6">
+<a class="solid-button px-8 py-4 font-button text-button uppercase tracking-widest w-full sm:w-auto text-center" href="/brands">
+                            Explore the Brands
+                        </a>
+<a class="group flex items-center font-button text-button uppercase tracking-widest text-primary hover:text-secondary transition-colors duration-300 py-4 border-b border-transparent hover:border-secondary" href="/about">
+                            Our Story
+                        </a>
+</div>
+<div class="mt-16 font-label-caps text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">
+                        Est. 2019 · New Delhi
+                    </div>
+</div>
+</div>
+</div>
+</header>
+<!-- Presence Strip -->
+<div class="w-full bg-surface-container-lowest border-b border-secondary/10 py-5 relative z-20">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-center items-center text-xs font-label-caps text-on-surface-variant tracking-[0.15em] gap-4 md:gap-8 text-center uppercase">
+<div class="flex items-center">
+<span class="status-dot"></span>
+                SIX SIGNATURE BRANDS
+            </div>
+<div class="hidden md:block w-px h-4 bg-secondary/30"></div>
+<div class="flex items-center">
+                DELHI · MUMBAI · KOLKATA · PUNE · GURUGRAM
+            </div>
+<div class="hidden md:block w-px h-4 bg-secondary/30"></div>
+<a class="hover:text-secondary transition-colors" href="mailto:hello@campbellindia.com">
+                hello@campbellindia.com
+            </a>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 bg-background">
+<!-- Featured Brands (Asymmetric Magazine-Style Rhythm) -->
+<section class="py-section-padding-mobile md:py-section-padding px-gutter max-w-container-max mx-auto reveal" id="brands">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— The Portfolio</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">A Constellation of Brands</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md border-l border-secondary/30 pl-6">
+                    Each house is distinct in spirit yet united by a single standard — immersive design, culinary excellence, and uncompromising guest delight.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start mt-16">
+<!-- Louve: Large Left -->
+<a href="/brands#louve" class="md:col-span-8 relative group block">
+<div class="aspect-[16/10] w-full overflow-hidden luxe-shadow img-vignette bg-surface-container">
+<img alt="Louve — the flagship at Khan Market" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="/images/brand-louve.jpg"/>
+</div>
+<div class="mt-6 flex justify-between items-start border-b border-outline-variant/30 pb-6">
+<div>
+<div class="flex gap-2 mb-2">
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase">The Flagship</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Louve</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">A 3,000 m² multi-level landmark blending Latin charm with contemporary elegance.</p>
+</div>
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase shrink-0 ml-4 text-right">Khan Market<br/>Delhi</span>
+</div>
+</a>
+<!-- Meette: Small Right (offset down) -->
+<a href="/brands#meette" class="md:col-span-4 md:mt-32 relative group block">
+<div class="aspect-[3/4] w-full overflow-hidden luxe-shadow bg-surface-container mb-4">
+<img alt="Meette — atelier patisserie" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="/images/brand-meette.jpg"/>
+</div>
+<div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+<div>
+<h3 class="font-headline-md text-2xl text-primary font-medium mb-1">Meette</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Artistic patisserie where every creation is craft.</p>
+</div>
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase shrink-0 ml-4">Est. 2015</span>
+</div>
+</a>
+<!-- Cosy Box: Medium Left -->
+<a href="/brands#cosy-box" class="md:col-span-6 relative group mt-16 md:mt-0 block">
+<div class="aspect-square w-full overflow-hidden luxe-shadow bg-surface-container mb-4">
+<img alt="Cosy Box — cinematic fine dining" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="/images/brand-cosybox.jpg"/>
+</div>
+<div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+<div>
+<h3 class="font-headline-md text-2xl text-primary font-medium mb-1">Cosy Box</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">From Cannes to India — cinematic glamour and global cuisine.</p>
+</div>
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase shrink-0 ml-4 text-right">4 Cities</span>
+</div>
+</a>
+<!-- Toy Room: Large Right -->
+<a href="/brands#toy-room" class="md:col-span-6 relative group mt-16 md:mt-32 block">
+<div class="aspect-square w-full overflow-hidden luxe-shadow bg-surface-container mb-4">
+<img alt="Toy Room — globally recognised nightlife" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="/images/brand-toyroom.jpg"/>
+</div>
+<div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+<div>
+<h3 class="font-headline-md text-2xl text-primary font-medium mb-1">Toy Room</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">A globally recognised nightlife brand for the after-dark elite.</p>
+</div>
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase shrink-0 ml-4 text-right">4 Cities</span>
+</div>
+</a>
+</div>
+<div class="mt-24 text-center">
+<a class="inline-flex items-center gap-2 font-button text-button uppercase tracking-widest text-on-surface border-b border-secondary pb-1 hover:text-secondary transition-colors duration-300" href="/brands">
+                    Explore All Six Brands
+                </a>
+</div>
+</section>
+<!-- Founders Section -->
+<section class="py-section-padding-mobile md:py-section-padding px-gutter max-w-container-max mx-auto reveal" id="founders">
+<div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+<div class="w-full md:w-1/2 relative">
+<div class="aspect-[3/4] w-full overflow-hidden luxe-shadow bg-surface-container">
+<img alt="Shikha & Ashish Begwani — founders of Campbell India" class="w-full h-full object-cover" src="/images/founders.jpg"/>
+</div>
+</div>
+<div class="w-full md:w-1/2">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— The Founders</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Shikha &amp; Ashish Begwani</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                    Campbell India is led by Ashish Begwani — a seasoned entrepreneur with over two decades across real estate, finance and international business — and Shikha Begwani, a serial entrepreneur recognised among LuxeBook's Top 50 Powerful Women in Luxury.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                    Together they pair creative vision with strategic acumen, building brands that resonate with India's most discerning guests.
+                </p>
+<a class="inline-flex items-center gap-2 font-button text-button uppercase tracking-widest text-on-surface border-b border-secondary pb-1 hover:text-secondary transition-colors duration-300" href="/about">
+                    Read Our Story
+                </a>
+</div>
+</div>
+</section>
+<!-- The Campbell Standard -->
+<section class="py-section-padding bg-surface-container-lowest border-y border-secondary/10 reveal">
+<div class="max-w-container-max mx-auto px-gutter text-center">
+<span class="font-label-caps text-label-caps text-secondary mb-12 block tracking-[0.2em] uppercase">— The Campbell Standard</span>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-6" style="font-variation-settings: 'FILL' 1;">movie</span>
+<p class="font-headline-md text-xl italic text-primary mb-4 leading-relaxed">Official Food Partner of the Cannes Film Festival, brought home through Cosy Box.</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-6" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<p class="font-headline-md text-xl italic text-primary mb-4 leading-relaxed">A founder named among LuxeBook's Top 50 Powerful Women in Luxury.</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-6" style="font-variation-settings: 'FILL' 1;">public</span>
+<p class="font-headline-md text-xl italic text-primary mb-4 leading-relaxed">A portfolio poised to take India's royal culinary heritage to Dubai, London and Singapore.</p>
+</div>
+</div>
+<div class="pt-12 border-t border-outline-variant/20">
+<p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest uppercase mb-8">In Collaboration &amp; Acclaim</p>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<span class="font-headline-lg text-2xl tracking-widest text-center">CANNES<br/>FILM FESTIVAL</span>
+<span class="font-headline-md text-2xl italic text-center">LuxeBook<br/>Top 50</span>
+<span class="font-headline-lg text-2xl tracking-widest text-center">THE ASHOK<br/>NEW DELHI</span>
+<span class="font-headline-md text-2xl tracking-tighter text-center">ROYAL HOUSE<br/>OF PATIALA</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Presence / Flagship Location -->
+<section class="py-section-padding-mobile md:py-section-padding px-gutter max-w-container-max mx-auto reveal" id="presence">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1 relative aspect-square md:aspect-[4/3] w-full bg-surface-container luxe-shadow overflow-hidden group">
+<iframe title="Campbell India — Khan Market, New Delhi" class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter: invert(0.92) hue-rotate(180deg) brightness(0.9) contrast(0.95) saturate(0.7);" src="https://www.openstreetmap.org/export/embed.html?bbox=77.217%2C28.595%2C77.237%2C28.606&layer=mapnik&marker=28.6004%2C77.2270"></iframe>
+<a class="absolute bottom-8 left-8 right-8 solid-button text-center py-4 font-button uppercase tracking-widest text-sm z-10" href="https://www.google.com/maps/dir/?api=1&destination=Khan+Market+New+Delhi" target="_blank" rel="noopener">
+                        Get Directions
+                    </a>
+</div>
+<div class="order-1 md:order-2 flex flex-col justify-center max-w-md mx-auto md:ml-12">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— Our Presence</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Rooted in India's Finest Addresses</h2>
+<div class="space-y-8 font-body-lg text-on-surface-variant">
+<div>
+<h4 class="font-label-caps text-secondary tracking-widest uppercase mb-2">Flagship — Louve</h4>
+<p>Khan Market<br/>New Delhi</p>
+</div>
+<div>
+<h4 class="font-label-caps text-secondary tracking-widest uppercase mb-2">Across the Country</h4>
+<p>Delhi · Gurugram · Mumbai<br/>Kolkata · Pune</p>
+</div>
+<div>
+<h4 class="font-label-caps text-secondary tracking-widest uppercase mb-2">Enquiries</h4>
+<p><a class="hover:text-primary transition-colors border-b border-secondary/30 pb-0.5" href="mailto:hello@campbellindia.com">hello@campbellindia.com</a></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Enquiry Action Block -->
+<section class="py-section-padding-mobile md:py-section-padding relative overflow-hidden reveal" id="enquire">
+<div class="relative z-10 max-w-3xl mx-auto px-gutter text-center">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— Partner With Us</span>
+<h2 class="font-headline-lg text-primary mb-8">Private Events, Press &amp; Partnerships</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                    From bespoke private dining to brand collaborations and media enquiries, our team curates every detail with care.
+                </p>
+<a class="solid-button inline-flex px-10 py-4 font-button text-button uppercase tracking-widest" href="/contact">
+                    Make an Enquiry
+                </a>
+</div>
+</section>
+</main>
+</Base>

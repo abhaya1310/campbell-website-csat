@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+
+const brands = [
+  {
+    id: 'louve',
+    index: '01',
+    name: 'Louve',
+    category: 'The Flagship',
+    location: 'Khan Market · New Delhi',
+    image: '/images/brand-louve.jpg',
+    tags: ['Opening Soon', 'European · Mediterranean', 'Asian'],
+    body: [
+      "Campbell India's flagship, set to unveil in Delhi's most prestigious retail destination — Khan Market. Spanning over 3,000 square metres with a capacity of 300+ guests, Louve offers a multi-level, immersive dining experience that blends Latin charm with contemporary elegance.",
+      'A stunning open-air terrace hosts intimate evenings and premium lifestyle events. The ground level showcases progressive European, Mediterranean and contemporary Italian cuisine, while the upper level offers an elevated take on classic Asian fare.',
+    ],
+  },
+  {
+    id: 'cosy-box',
+    index: '02',
+    name: 'Cosy Box',
+    category: 'Cinematic Fine Dining',
+    location: 'Delhi · Gurugram · Mumbai · Kolkata',
+    image: '/images/brand-cosybox.jpg',
+    tags: ['Mediterranean', 'Italian', 'Asian'],
+    body: [
+      'From its origins as the official food partner of the Cannes Film Festival, Cosy Box brings cinematic glamour to India.',
+      'Across Delhi, Gurugram, Mumbai and Kolkata, it offers a fusion of Mediterranean, Italian and Asian cuisines within opulent settings that celebrate the allure of the silver screen.',
+    ],
+  },
+  {
+    id: 'toy-room',
+    index: '03',
+    name: 'Toy Room',
+    category: 'Globally Recognised Nightlife',
+    location: 'Delhi · Mumbai · Kolkata · Pune',
+    image: '/images/brand-toyroom.jpg',
+    tags: ['Nightlife', 'High-Energy Club', 'Eclectic Music'],
+    body: [
+      'As a globally recognised nightlife brand, Toy Room delivers high-energy club experiences. Known for its vibrant ambiance and eclectic music, it caters to a discerning clientele seeking exclusive entertainment.',
+      "With thriving locations in Delhi, Mumbai, Kolkata and Pune, Toy Room brings its signature blend of luxury and nightlife to India's most dynamic cities.",
+    ],
+  },
+  {
+    id: 'ophelia',
+    index: '04',
+    name: 'Ophelia',
+    category: 'Restaurant & Bar',
+    location: 'The Ashok · New Delhi',
+    image: '/images/brand-ophelia.jpg',
+    tags: ['Turkish', 'Italian', 'Innovative Cocktails'],
+    body: [
+      "Nestled in Delhi's iconic The Ashok, Ophelia transports guests to a Shakespearean era with its Renaissance-inspired décor.",
+      'Offering a menu that spans Turkish to Italian delicacies, it provides an evocative dining experience complemented by ambient vibes and innovative cocktails.',
+    ],
+  },
+  {
+    id: 'meette',
+    index: '05',
+    name: 'Meette',
+    category: 'Atelier Patisserie',
+    location: 'Founded 2015',
+    image: '/images/brand-meette.jpg',
+    tags: ['Artistic Pastry', 'Innovation', 'Tradition'],
+    body: [
+      'Founded in 2015 with a deep passion for culinary craftsmanship, Meette was born from a gap in the market for refined, artistic pastries that balance innovation with tradition.',
+      'Here, food is an expression of artistry — every creation crafted with meticulous attention to detail for a clientele who share an appreciation for the beauty in every bite.',
+    ],
+  },
+  {
+    id: 'patiala',
+    index: '06',
+    name: 'Royal House of Patiala',
+    category: 'Royal Indian Fine Dining',
+    location: 'The Ashok · New Delhi',
+    image: '/images/brand-patiala.jpg',
+    tags: ['Authentic Indian', 'Heritage', 'Dubai · London · Singapore'],
+    body: [
+      'The latest venture by Campbell Hospitality, in collaboration with His Highness the King of Patiala — an authentic Indian cuisine restaurant that brings alive over 300 years of royal recipes and traditions.',
+      'Opening its first outlet at The Ashok Hotel in New Delhi, this majestic 12,500 sq. ft. property offers a regal dining experience with palace-inspired interiors and immersive storytelling, with future outlets planned in Dubai, London and Singapore.',
+    ],
+  },
+];
+---
+<Base title="Our Brands | Campbell India">
+<main class="flex-grow pt-32 md:pt-40 pb-section-padding-mobile md:pb-section-padding w-full">
+<!-- Hero -->
+<section class="text-center mb-24 md:mb-32 px-gutter max-w-container-max mx-auto">
+<span class="font-label-caps text-label-caps text-secondary mb-6 block tracking-[0.2em] uppercase">— The Portfolio</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-6">Our Brands</h1>
+<p class="font-headline-md text-headline-md text-secondary italic tracking-wide max-w-2xl mx-auto">Six houses, one standard of luxury</p>
+</section>
+
+<!-- Brand Blocks -->
+<div class="flex flex-col gap-24 md:gap-40 px-gutter max-w-container-max mx-auto">
+{brands.map((brand, i) => (
+<section id={brand.id} class="scroll-mt-32 reveal grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-gutter items-center">
+<div class={`relative aspect-[4/3] w-full overflow-hidden luxe-shadow img-vignette bg-surface-container group md:col-span-7 ${i % 2 === 1 ? 'md:order-2 md:col-start-6' : ''}`}>
+<img alt={`${brand.name} — ${brand.category}`} class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src={brand.image}/>
+<div class="absolute top-5 left-5 font-display-lg-mobile text-5xl text-primary/90 drop-shadow-lg">{brand.index}</div>
+</div>
+<div class={`md:col-span-5 ${i % 2 === 1 ? 'md:order-1 md:col-start-1' : ''}`}>
+<span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— {brand.category}</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">{brand.name}</h2>
+<p class="font-label-caps text-[11px] text-on-surface-variant tracking-[0.18em] uppercase mb-8">{brand.location}</p>
+<div class="font-body-md text-body-md text-on-surface-variant space-y-5 leading-relaxed mb-8">
+{brand.body.map((para) => (<p>{para}</p>))}
+</div>
+<div class="flex flex-wrap gap-3">
+{brand.tags.map((tag) => (
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase border border-secondary/30 px-3 py-1.5">{tag}</span>
+))}
+</div>
+</div>
+</section>
+))}
+</div>
+
+<!-- Closing CTA -->
+<section class="mt-32 md:mt-40 text-center px-gutter max-w-3xl mx-auto reveal">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— Partner With Us</span>
+<h2 class="font-headline-lg text-primary mb-8">Bring a Campbell house to your city</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+            For franchise, collaboration, private events or press, our team would be delighted to hear from you.
+        </p>
+<a class="solid-button inline-flex px-10 py-4 font-button text-button uppercase tracking-widest" href="/contact">
+            Make an Enquiry
+        </a>
+</section>
+</main>
+</Base>

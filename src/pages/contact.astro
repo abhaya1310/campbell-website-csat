@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Contact | Campbell India">
+<main class="flex-grow pt-[120px] pb-section-padding md:pb-section-padding">
+<!-- Hero Section -->
+<section class="px-gutter max-w-container-max mx-auto pt-section-padding-mobile md:pt-section-padding pb-16 md:pb-32">
+<div class="max-w-4xl">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-6 leading-none">Get in touch</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l border-secondary pl-6">
+                    We welcome enquiries for private events, brand partnerships, franchise opportunities and press. Tell us how we can help, and our team will be in touch.
+                </p>
+</div>
+</section>
+<!-- Contact Grid -->
+<section class="px-gutter max-w-container-max mx-auto pb-section-padding-mobile md:pb-section-padding">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-gutter">
+<!-- Left Column: Form -->
+<div class="md:col-span-7 lg:col-span-6 bg-surface p-8 md:p-12 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
+<form action="#" class="space-y-10" method="POST" data-ajax>
+<input type="hidden" name="_subject" value="Campbell India — Website enquiry" />
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-secondary uppercase tracking-widest" for="name">Name</label>
+<input class="w-full form-input-bottom-border" id="name" name="name" placeholder="Your full name" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-secondary uppercase tracking-widest" for="email">Email</label>
+<input class="w-full form-input-bottom-border" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-secondary uppercase tracking-widest" for="phone">Phone</label>
+<div class="flex items-end">
+<span class="text-on-surface-variant font-body-md pb-[9px] pr-2 border-b border-primary block">+91</span>
+<input class="w-full form-input-bottom-border flex-1" id="phone" name="phone" placeholder=" 00000 00000" type="tel"/>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-secondary uppercase tracking-widest" for="subject">Nature of Enquiry</label>
+<select class="w-full form-input-bottom-border appearance-none bg-transparent" id="subject" name="subject">
+<option class="bg-surface text-primary" value="general">General Enquiry</option>
+<option class="bg-surface text-primary" value="private-events">Private Events &amp; Reservations</option>
+<option class="bg-surface text-primary" value="partnerships">Brand Partnership</option>
+<option class="bg-surface text-primary" value="franchise">Franchise &amp; Expansion</option>
+<option class="bg-surface text-primary" value="press">Press &amp; Media</option>
+<option class="bg-surface text-primary" value="careers">Careers</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-secondary uppercase tracking-widest" for="message">Message</label>
+<textarea class="w-full form-input-bottom-border resize-none" id="message" name="message" placeholder="How can we assist you?" rows="4"></textarea>
+</div>
+<button class="w-full bg-secondary text-on-secondary font-button text-button uppercase tracking-widest py-4 hover:bg-opacity-90 transition-opacity duration-300 mt-4" type="submit">
+                            Send Message
+                        </button>
+</form>
+</div>
+<!-- Right Column: Details -->
+<div class="md:col-span-5 lg:col-span-5 lg:col-start-8 flex flex-col justify-center space-y-16">
+<div>
+<h3 class="font-label-caps text-label-caps text-secondary mb-4 tracking-widest uppercase">— Flagship</h3>
+<p class="font-body-lg text-body-lg text-primary leading-relaxed">
+                            Louve — Khan Market<br/>
+                            New Delhi 110003<br/>
+                            India
+                        </p>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-secondary mb-4 tracking-widest uppercase">— Contact</h3>
+<p class="font-body-lg text-body-lg text-primary space-y-2 flex flex-col">
+<a class="hover:text-secondary transition-colors duration-300" href="mailto:hello@campbellindia.com">hello@campbellindia.com</a>
+<a class="hover:text-secondary transition-colors duration-300" href="mailto:partnerships@campbellindia.com">partnerships@campbellindia.com</a>
+</p>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-secondary mb-4 tracking-widest uppercase">— Office Hours</h3>
+<p class="font-body-lg text-body-lg text-primary">
+                            Monday – Saturday<br/>
+                            10:00 AM – 7:00 PM (IST)
+                        </p>
+</div>
+<div class="flex space-x-6 pt-4 border-t border-outline-variant/30">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-300" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Map -->
+<section class="w-full relative">
+<div class="h-[600px] w-full bg-surface-container-high relative overflow-hidden">
+<iframe title="Campbell India — Khan Market, New Delhi" class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="filter: invert(0.92) hue-rotate(180deg) brightness(0.9) contrast(0.95) saturate(0.7);" src="https://www.openstreetmap.org/export/embed.html?bbox=77.217%2C28.595%2C77.237%2C28.606&layer=mapnik&marker=28.6004%2C77.2270"></iframe>
+<a class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 bg-surface/90 backdrop-blur-md border border-secondary text-secondary font-button text-button px-8 py-3 uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.5)]" href="https://www.google.com/maps/dir/?api=1&destination=Khan+Market+New+Delhi" target="_blank" rel="noopener">
+                        Get Directions
+                    </a>
+</div>
+<!-- "Find Us" Strip -->
+<div class="border-y border-outline-variant/30 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter py-6 flex flex-col md:flex-row justify-between items-center text-sm font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">
+<div class="flex items-center space-x-3 mb-4 md:mb-0">
+<span class="material-symbols-outlined text-secondary text-lg">subway</span>
+<span>Nearest Metro: Khan Market</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-secondary text-lg">event_available</span>
+<span>Private Events by Appointment</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Direct Enquiry Channels -->
+<section class="px-gutter max-w-container-max mx-auto py-section-padding-mobile md:py-section-padding border-b border-outline-variant/30">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">— Private Events</h4>
+<a class="font-body-md text-body-md text-primary hover:text-secondary transition-colors duration-300 block" href="mailto:events@campbellindia.com">events@campbellindia.com</a>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">— Partnerships</h4>
+<a class="font-body-md text-body-md text-primary hover:text-secondary transition-colors duration-300 block" href="mailto:partnerships@campbellindia.com">partnerships@campbellindia.com</a>
+</div>
+<div class="space-y-4">
+<h4 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">— Media &amp; Press</h4>
+<a class="font-body-md text-body-md text-primary hover:text-secondary transition-colors duration-300 block" href="mailto:press@campbellindia.com">press@campbellindia.com</a>
+</div>
+</div>
+</section>
+</main>
+</Base>
