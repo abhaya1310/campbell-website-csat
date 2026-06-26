@@ -9,9 +9,9 @@ const brands = [
     category: 'The Flagship',
     location: 'Khan Market · New Delhi',
     image: '/images/brand-louve.jpg',
-    tags: ['Opening Soon', 'European · Mediterranean', 'Asian'],
+    tags: ['Now Open', 'European · Mediterranean', 'Asian'],
     body: [
-      "Campbell India's flagship, set to unveil in Delhi's most prestigious retail destination — Khan Market. Spanning over 3,000 square metres with a capacity of 300+ guests, Louve offers a multi-level, immersive dining experience that blends Latin charm with contemporary elegance.",
+      "Campbell India's flagship, unveiled in February 2026 in Delhi's most prestigious retail destination — Khan Market. Spanning over 3,000 square metres with a capacity of 300+ guests, Louve offers a multi-level, immersive dining experience that blends Latin charm with contemporary elegance.",
       'A stunning open-air terrace hosts intimate evenings and premium lifestyle events. The ground level showcases progressive European, Mediterranean and contemporary Italian cuisine, while the upper level offers an elevated take on classic Asian fare.',
     ],
   },
@@ -68,16 +68,17 @@ const brands = [
     ],
   },
   {
-    id: 'patiala',
+    // PLACEHOLDER — awaiting real Dodici copy + photo from founder.
+    id: 'dodici',
     index: '06',
-    name: 'Royal House of Patiala',
-    category: 'Royal Indian Fine Dining',
-    location: 'The Ashok · New Delhi',
-    image: '/images/brand-patiala.jpg',
-    tags: ['Authentic Indian', 'Heritage', 'Dubai · London · Singapore'],
+    name: 'Dodici',
+    category: 'The Newest House',
+    location: 'Coming Soon',
+    image: '/images/brand-patiala.jpg', // TODO: replace with /images/brand-dodici.jpg
+    tags: ['Coming Soon'],
     body: [
-      'The latest venture by Campbell Hospitality, in collaboration with His Highness the King of Patiala — an authentic Indian cuisine restaurant that brings alive over 300 years of royal recipes and traditions.',
-      'Opening its first outlet at The Ashok Hotel in New Delhi, this majestic 12,500 sq. ft. property offers a regal dining experience with palace-inspired interiors and immersive storytelling, with future outlets planned in Dubai, London and Singapore.',
+      'Dodici is the newest addition to the Campbell India portfolio — an intimate new dining concept currently taking shape.',
+      'Full details will be unveiled soon.',
     ],
   },
 ];
@@ -97,7 +98,8 @@ const brands = [
 <section id={brand.id} class="scroll-mt-32 reveal grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-gutter items-center">
 <div class={`relative aspect-[4/3] w-full overflow-hidden luxe-shadow img-vignette bg-surface-container group md:col-span-7 ${i % 2 === 1 ? 'md:order-2 md:col-start-6' : ''}`}>
 <img alt={`${brand.name} — ${brand.category}`} class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src={brand.image}/>
-<div class="absolute top-5 left-5 font-display-lg-mobile text-5xl text-primary/90 drop-shadow-lg">{brand.index}</div>
+<div class="absolute top-0 left-0 w-36 h-36 bg-gradient-to-br from-black/55 via-black/15 to-transparent pointer-events-none"></div>
+<div class="absolute top-5 left-5 font-display-lg-mobile text-5xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">{brand.index}</div>
 </div>
 <div class={`md:col-span-5 ${i % 2 === 1 ? 'md:order-1 md:col-start-1' : ''}`}>
 <span class="font-label-caps text-label-caps text-secondary mb-4 block tracking-[0.2em] uppercase">— {brand.category}</span>
