@@ -46,7 +46,7 @@ const brands = [
     index: '04',
     name: 'Ophelia',
     category: 'Restaurant & Bar',
-    location: 'The Ashok · New Delhi',
+    location: 'New Delhi',
     image: '/images/brand-ophelia.jpg',
     tags: ['Turkish', 'Italian', 'Innovative Cocktails'],
     body: [
@@ -68,16 +68,16 @@ const brands = [
     ],
   },
   {
-    // PLACEHOLDER — awaiting real Dodici copy + photo from founder.
-    id: 'dodici',
+    // PLACEHOLDER — awaiting real Dodicci copy + photo from founder.
+    id: 'dodicci',
     index: '06',
-    name: 'Dodici',
+    name: 'Dodicci',
     category: 'The Newest House',
     location: 'Coming Soon',
-    image: '/images/brand-patiala.jpg', // PLACEHOLDER photo — awaiting real Dodici photo from founder
+    image: null, // No photo yet — renders the "Revealed Soon" placeholder panel below
     tags: ['Coming Soon'],
     body: [
-      'Dodici is the newest addition to the Campbell India portfolio — an intimate new dining concept currently taking shape.',
+      'Dodicci is the newest addition to the Campbell India portfolio — an intimate new dining concept currently taking shape.',
       'Full details will be unveiled soon.',
     ],
   },
@@ -97,7 +97,15 @@ const brands = [
 {brands.map((brand, i) => (
 <section id={brand.id} class="scroll-mt-32 reveal grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-gutter items-center">
 <div class={`relative aspect-[4/3] w-full overflow-hidden luxe-shadow img-vignette bg-surface-container group md:col-span-7 ${i % 2 === 1 ? 'md:order-2 md:col-start-6' : ''}`}>
+{brand.image ? (
 <img alt={`${brand.name} — ${brand.category}`} class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src={brand.image}/>
+) : (
+<div class="absolute inset-0 flex flex-col items-center justify-center gap-5 text-center bg-gradient-to-br from-surface-container-high via-surface-container to-surface-container-lowest">
+<span class="font-display-lg text-7xl md:text-8xl text-primary/20 leading-none select-none">{brand.name.charAt(0)}</span>
+<span class="block w-10 h-px bg-secondary/60"></span>
+<span class="font-label-caps text-[11px] text-secondary tracking-[0.3em] uppercase">Revealed Soon</span>
+</div>
+)}
 <div class="absolute top-0 left-0 w-36 h-36 bg-gradient-to-br from-black/55 via-black/15 to-transparent pointer-events-none"></div>
 <div class="absolute top-5 left-5 font-display-lg-mobile text-5xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">{brand.index}</div>
 </div>
