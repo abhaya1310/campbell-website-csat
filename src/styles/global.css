@@ -80,15 +80,27 @@ html { scroll-behavior: smooth; }
             box-shadow: none;
         }
         
-        /* Smooth reveal animation classes */
-        .reveal {
+        /* Smooth reveal animation classes.
+           Scoped to .js-reveal (set on <html> only once the reveal script is
+           alive) so content is FAIL-VISIBLE: if the script never runs, never
+           loads, or errors, the page renders normally instead of blank. */
+        .js-reveal .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .reveal.active {
+        .js-reveal .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Anyone who prefers reduced motion just gets the content. */
+        @media (prefers-reduced-motion: reduce) {
+            .js-reveal .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
         }
 
         .status-dot {

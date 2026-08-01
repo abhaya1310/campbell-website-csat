@@ -1,14 +1,41 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import { SITE, SITE_URL } from '../config/site';
+
+import atmosphereImg from '../assets/images/atmosphere.jpg';
+import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
+
+const description =
+  'Founded in 2019, Campbell India operates at the intersection of fine dining, lifestyle and entertainment — from Michelin-style cuisine to world-renowned nightlife across Delhi, Mumbai, Kolkata and Pune.';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${SITE_URL}/about#page`,
+  name: `About ${SITE.name}`,
+  description,
+  mainEntity: { '@id': `${SITE_URL}/#organization` },
+};
 ---
-<Base title="About | Campbell India">
+
+<Base title="About | Campbell India" description={description} jsonLd={[aboutSchema]}>
 <div class="film-grain"></div>
 
-<main class="w-full">
+<main id="main-content" class="w-full">
 <!-- SECTION 1: HERO -->
 <section class="relative w-full h-[100vh] min-h-[760px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center" style="background-image: url('/images/atmosphere.jpg');"></div>
+<Image
+  src={atmosphereImg}
+  alt="The atmosphere inside a Campbell India venue"
+  class="w-full h-full object-cover"
+  widths={[640, 1280, 1920]}
+  sizes="100vw"
+  loading="eager"
+  fetchpriority="high"
+  quality={70}
+/>
 <div class="absolute inset-0 bg-background/65"></div>
 <div class="dark-luxe-vignette"></div>
 </div>
@@ -46,8 +73,16 @@ import Base from '../layouts/Base.astro';
                     </p>
 </div>
 </div>
-<div class="md:col-span-6 md:col-start-7 relative aspect-[4/5] md:aspect-auto md:h-[760px] w-full">
-<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/gallery-cosybox.jpg');"></div>
+<div class="md:col-span-6 md:col-start-7 relative aspect-[4/5] md:aspect-auto md:h-[760px] w-full overflow-hidden">
+<Image
+  src={galleryCosybox}
+  alt="Interior detail from Cosy Box"
+  class="absolute inset-0 w-full h-full object-cover"
+  widths={[480, 900, 1400]}
+  sizes="(max-width: 768px) 100vw, 50vw"
+  loading="lazy"
+  quality={72}
+/>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
 </div>
 </div>
