@@ -1,19 +1,20 @@
 {
-  "name": "mehfil-website",
+  "name": "campbell-india-website",
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "Dark Luxe editorial hospitality website — flagship build (MEHFIL)",
+  "description": "Campbell India — luxury hospitality group website (Astro static)",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.16.18",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
-    "tailwindcss": "^3.4.17",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/container-queries": "^0.1.1"
+    "astro": "^4.16.18",
+    "tailwindcss": "^3.4.17"
   }
 }

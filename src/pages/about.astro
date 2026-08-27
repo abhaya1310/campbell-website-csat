@@ -1,78 +1,72 @@
 ---
-import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import Programme from '../layouts/Programme.astro';
+import Rise from '../components/programme/Rise.astro';
+import SecHead from '../components/programme/SecHead.astro';
+import Band from '../components/programme/Band.astro';
+import { SITE, SITE_URL } from '../config/site';
+import { HOUSES, PILLARS } from '../data/houses';
+import atmosphere from '../assets/images/atmosphere.jpg';
+import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
+
+const description =
+  'Founded in 2019, Campbell India operates at the intersection of fine dining, lifestyle and entertainment — from Michelin-style cuisine to world-renowned nightlife across Delhi, Mumbai, Kolkata and Pune.';
+const schema = [{
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${SITE_URL}/about#page`,
+  name: `About ${SITE.name}`,
+  description,
+  mainEntity: { '@id': `${SITE_URL}/#organization` },
+}];
 ---
-<Base title="About | Campbell India">
-<div class="film-grain"></div>
+<Programme title="The House | Campbell India" description={description} jsonLd={schema}>
+  <section class="hero hero-short">
+    <div class="hero-img"><div class="px"><Image src={atmosphere} alt="" widths={[900, 1400, 2000]} sizes="100vw" loading="eager" fetchpriority="high" /></div></div>
+    <div class="hero-in">
+      <div class="eyebrow rv-i">Since 2019</div>
+      <Rise tag="h1" cls="dsp-l" lines={['A passion for', ['unforgettable hospitality.', true]]} />
+    </div>
+  </section>
 
-<main class="w-full">
-<!-- SECTION 1: HERO -->
-<section class="relative w-full h-[100vh] min-h-[760px] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center" style="background-image: url('/images/atmosphere.jpg');"></div>
-<div class="absolute inset-0 bg-background/65"></div>
-<div class="dark-luxe-vignette"></div>
-</div>
-<div class="relative z-10 text-center px-gutter max-w-container-max mx-auto mt-24">
-<div class="flex items-center justify-center gap-4 mb-8">
-<div class="h-px w-12 bg-secondary"></div>
-<span class="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">Since 2019</span>
-<div class="h-px w-12 bg-secondary"></div>
-</div>
-<h1 class="font-display-lg-mobile md:font-display-lg text-primary mb-8 md:mb-12">
-                A passion for<br class="hidden md:block"/> unforgettable hospitality
-            </h1>
-<p class="font-body-lg text-on-surface/80 max-w-2xl mx-auto font-light">
-                Operating at the forefront of India's evolving luxury hospitality landscape — from Michelin-style cuisine to world-renowned nightlife.
-            </p>
-</div>
-</section>
+  <section class="sec"><div class="wrap">
+    <SecHead n="&#8212;" title="Background" />
+    <div class="split">
+      <div><Rise tag="h2" cls="dsp-m" lines={['Built at the intersection of', ['dining, lifestyle', true], ['and entertainment.', true]]} /></div>
+      <div class="rv-i">
+        <p class="body">Founded with a passion for creating unforgettable hospitality experiences, our brand portfolio includes Cosy Box, Ophelia, Toy Room, Meette, Louve and Dodicci — each uniquely positioned at the intersection of fine dining, lifestyle and entertainment.</p>
+        <p class="body">From Michelin-style cuisine to world-renowned nightlife, our presence in major cities like Delhi, Mumbai, Kolkata and Pune reflects a deep understanding of urban tastes and a commitment to delivering elevated, culturally resonant experiences.</p>
+      </div>
+    </div>
+    <div class="plate" style="margin-top:clamp(48px,7vw,88px)">
+      <div class="px"><Image src={galleryCosybox} alt="Interior detail from Cosy Box" widths={[900, 1400, 2000]} sizes="100vw" style="aspect-ratio:21/8" /></div>
+    </div>
+  </div></section>
 
-<!-- SECTION 2: BACKGROUND -->
-<section class="py-section-padding-mobile md:py-section-padding px-gutter max-w-container-max mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-<div class="md:col-span-5 md:col-start-1 mb-12 md:mb-0">
-<div class="flex items-center gap-4 mb-12">
-<span class="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">— Background</span>
-</div>
-<h2 class="font-headline-lg-mobile md:font-headline-lg text-primary mb-8 leading-tight">
-                    Built at the intersection of dining, lifestyle and entertainment.
-                </h2>
-<div class="font-body-md text-on-surface/80 space-y-6 font-light leading-relaxed">
-<p>
-                        Founded with a passion for creating unforgettable hospitality experiences, our brand portfolio includes Cosy Box, Ophelia, Toy Room, Meette, Louve and Dodicci — each uniquely positioned at the intersection of fine dining, lifestyle and entertainment.
-                    </p>
-<p>
-                        From Michelin-style cuisine to world-renowned nightlife, our presence in major cities like Delhi, Mumbai, Kolkata and Pune reflects a deep understanding of urban tastes and a commitment to delivering elevated, culturally resonant experiences.
-                    </p>
-</div>
-</div>
-<div class="md:col-span-6 md:col-start-7 relative aspect-[4/5] md:aspect-auto md:h-[760px] w-full">
-<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/gallery-cosybox.jpg');"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
-</div>
-</div>
-</section>
+  <Band quote="Operating at the forefront of India's evolving luxury hospitality landscape." attr="Campbell Property &amp; Hospitality" />
 
-<!-- SECTION 3: VISION -->
-<section class="py-section-padding bg-surface-container-lowest border-y border-secondary/10">
-<div class="max-w-4xl mx-auto px-gutter text-center">
-<span class="font-label-caps text-label-caps text-secondary mb-8 block tracking-[0.2em] uppercase">— Our Vision</span>
-<p class="font-headline-lg-mobile md:font-headline-lg text-primary leading-snug mb-8">
-                To redefine luxury hospitality by curating immersive dining and nightlife experiences that seamlessly blend global sophistication with Indian warmth.
-            </p>
-<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto font-light">
-                Through our distinguished brands, we aspire to set new benchmarks in culinary excellence, ambiance and guest delight.
-            </p>
-</div>
-</section>
+  <section class="sec"><div class="wrap">
+    <SecHead n="&#8212;" title="What we do" />
+    <div class="g3">
+      {PILLARS.map(([name, copy], i) => (
+        <div class="pillar rv-i">
+          <div class="eyebrow" style="margin-bottom:14px">0{i + 1}</div>
+          <h4>{name}</h4>
+          <p class="body">{copy}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
 
-<!-- SECTION 4: DISCOVER BRANDS CTA -->
-<section class="py-section-padding-mobile md:py-section-padding px-gutter max-w-container-max mx-auto">
-<div class="text-center">
-<a class="solid-button inline-flex px-10 py-4 font-button text-button uppercase tracking-widest" href="/brands">
-                Discover Our Brands
-            </a>
-</div>
-</section>
-</main>
-</Base>
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <SecHead n="01 &#8212; 06" title="The Houses" />
+    <div class="cities rv-i">
+      {HOUSES.map((x) => (
+        <div style={`--house:${x.ink}`}>
+          <div class="cn"><a href={`/brands/${x.slug}`}>{x.name}</a></div>
+          <div class="cc">{x.category} &#183; {x.location}</div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+</Programme>

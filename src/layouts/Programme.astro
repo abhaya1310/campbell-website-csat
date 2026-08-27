@@ -1,0 +1,204 @@
+---
+/**
+ * The programme shell: masthead, house drawer, ink curtain, progress rule, footer.
+ *
+ * Navigation between houses is a real page load driven by Astro view
+ * transitions, so every house keeps a real URL for SEO and sharing while the
+ * ink curtain still plays. The curtain is persisted across swaps; everything
+ * else is rebuilt and re-initialised on `astro:page-load`.
+ */
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/programme.css';
+import { HOUSES } from '../data/houses';
+import { SITE, SITE_URL, EMAILS, SOCIALS, CITIES, FLAGSHIP, FORMSPREE_ID, GA_ID, OG_IMAGE } from '../config/site';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Slug of the house being shown, when this is a house page. */
+  house?: string;
+  jsonLd?: Record<string, unknown>[];
+}
+const { title = `${SITE.name} | ${SITE.tagline}`, description = SITE.description, house, jsonLd = [] } = Astro.props;
+
+const h = house ? HOUSES.find((x) => x.slug === house) : undefined;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE_URL).href.replace(/(.+)\/$/, '$1');
+const ogImage = new URL(OG_IMAGE, Astro.site ?? SITE_URL).href;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE_URL}/#organization`,
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: SITE_URL,
+  logo: ogImage,
+  description: SITE.description,
+  foundingDate: SITE.foundingYear,
+  ...(EMAILS.general ? { email: EMAILS.general } : {}),
+  areaServed: CITIES.map((city) => ({ '@type': 'City', name: city })),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: FLAGSHIP.locality,
+    addressRegion: FLAGSHIP.region,
+    addressCountry: FLAGSHIP.country,
+  },
+  ...(SOCIALS.some((s) => s.href) ? { sameAs: SOCIALS.filter((s) => s.href).map((s) => s.href) } : {}),
+};
+const schemas = [organizationSchema, ...jsonLd];
+
+/** slug -> {ink,name}: lets the curtain take the target house's colour. */
+const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.ink, name: x.name }]));
+---
+
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#F2EEE6" />
+    <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+
+    <meta name="formspree-id" content={FORMSPREE_ID} />
+    <meta name="fallback-email" content={EMAILS.general} />
+
+    <!--
+      Arm the reveal before first paint. The hiding CSS is scoped to .rv, so if
+      scripting is off, blocked, or throws, the page renders with everything
+      visible. Content is never trapped at opacity:0.
+    -->
+    <script is:inline>
+      document.documentElement.classList.add('rv');
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          if (!window.__revealReady) document.documentElement.classList.remove('rv');
+        }, 3000);
+      });
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Archivo:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <ViewTransitions />
+
+    {GA_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script is:inline define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { window.dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+        </script>
+      </>
+    )}
+  </head>
+
+  <body class={house ? '' : 'is-group'}>
+    <a href="#main-content" class="skip">Skip to content</a>
+
+    <div class="prog" id="prog" transition:persist="prog"></div>
+    <div class="curtain" id="curtain" transition:persist="curtain"><div class="cn"></div></div>
+
+    <header class="mast onphoto" id="mast" data-house={h ? '1' : undefined}>
+      <div class="mast-in">
+        <a href="/" class="logo">CAMPBELL<sup>&#174;</sup></a>
+        <div class="mnav">
+          {h ? (
+            <>
+              <span class="runorder hide-sm">HOUSE <b>{h.n}</b> / 06</span>
+              <button class="i-btn" data-notes aria-label="Design notes">i</button>
+              <a href="/" class="back"><span class="ar">&#8592;</span> Back to Campbell India</a>
+            </>
+          ) : (
+            <>
+              <a href="/about" class="hide-sm">The House</a>
+              <a href="/brands" class="hide-sm">The Houses</a>
+              <a href="/contact" class="hide-sm">Contact</a>
+              <button class="i-btn" data-notes aria-label="Design notes">i</button>
+            </>
+          )}
+          <button class="navbtn" data-nav aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+        </div>
+      </div>
+    </header>
+
+    <div class="nav" id="nav">
+      <div class="nav-in">
+        <div class="eyebrow" style="margin-bottom:clamp(20px,3vw,38px)">The season &#183; 01 &#8212; 06</div>
+        {HOUSES.map((x) => (
+          <a class="nav-row" href={`/brands/${x.slug}`} style={`--house:${x.ink}`}>
+            <span class="nn num">{x.n}</span>
+            <span class="nname">{x.name}</span>
+            {x.hero && <Image class="nav-thumb" src={x.hero} alt="" widths={[260]} sizes="260px" loading="lazy" />}
+            <span class="ncity">{x.location}</span>
+          </a>
+        ))}
+        <div class="nav-extra">
+          <a href="/about">The House</a><a href="/contact">Contact</a>
+        </div>
+        <div class="nav-note"><button class="i-btn" data-notes aria-label="Design notes">i</button> Design notes</div>
+      </div>
+    </div>
+
+    <main id="main-content"><slot /></main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="logo">CAMPBELL<sup>&#174;</sup></div>
+        <div class="foot-grid">
+          <div>
+            <div class="lede" style="color:#EDE6D9;max-width:26ch;font-size:1.35rem">Six houses, one standard of luxury.</div>
+            <p style="margin-top:18px;font-size:.85rem;color:#8A8074;max-width:44ch">
+              {SITE.legalName} &#183; Founded {SITE.foundingYear} &#183; {CITIES.join(', ')}
+            </p>
+          </div>
+          <div>
+            <h5>The Houses</h5>
+            <ul>{HOUSES.map((x) => <li><a href={`/brands/${x.slug}`}>{x.name}</a></li>)}</ul>
+          </div>
+          <div>
+            <h5>Campbell</h5>
+            <ul>
+              <li><a href="/about">The House</a></li>
+              <li><a href="/brands">All houses</a></li>
+              <li><a href="/contact">Enquiries</a></li>
+            </ul>
+            {SOCIALS.some((s) => s.href) && (
+              <ul style="margin-top:14px">
+                {SOCIALS.filter((s) => s.href).map((s) => <li><a href={s.href} rel="noopener">{s.label}</a></li>)}
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline define:vars={{ INK }}>
+      window.__CAMPBELL_INK = INK;
+    </script>
+    <script src="../scripts/programme.js"></script>
+  </body>
+</html>

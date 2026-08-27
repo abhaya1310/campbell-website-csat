@@ -1,0 +1,14 @@
+---
+/**
+ * A designed hold for content Campbell has not supplied yet.
+ * It states exactly what is owed, so the page doubles as the brief.
+ * This is NOT a placeholder to be filled with a stock image.
+ */
+interface Props { label: string; what: string; owe?: string; cls?: string }
+const { label, what, owe = 'To be supplied by the client', cls = '' } = Astro.props;
+---
+<div class={`gap ${cls}`}>
+  <div class="lbl">{label}</div>
+  <div class="what">{what}</div>
+  <div class="owe">{owe}</div>
+</div>

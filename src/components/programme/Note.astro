@@ -1,0 +1,6 @@
+---
+/** Design commentary. Hidden until the (i) in the bar is pressed. */
+interface Props { title: string }
+const { title } = Astro.props;
+---
+<div class="note"><b>{title}</b><slot /></div>

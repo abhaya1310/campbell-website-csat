@@ -1,0 +1,17 @@
+---
+/**
+ * A full-bleed field of the house's own ink carrying a pull-quote.
+ * Colour on this page is bought by AREA — a hairline of the same ink is
+ * invisible at page scale, this is not.
+ */
+import Rise from './Rise.astro';
+interface Props { quote: string; attr: string; ink?: string }
+const { quote, attr, ink } = Astro.props;
+const lines = quote.split(/(?<=[,.]) /).slice(0, 4);
+---
+<section class="band" data-band="1" style={ink ? `--house:${ink}` : undefined}>
+  <div class="wrap">
+    <Rise tag="p" cls="q" lines={lines} />
+    <div class="attr rv-i" set:html={attr} />
+  </div>
+</section>
