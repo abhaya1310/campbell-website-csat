@@ -1,0 +1,71 @@
+/* ================= DEVICE-AGNOSTIC PASS ================= */
+/* 1. Touch-target floor. Visual size unchanged; the HIT area grows. */
+.mnav>*{flex:none}
+.logo{display:inline-flex;align-items:center;min-height:44px}
+.i-btn{position:relative;width:44px;height:44px;border:0;border-radius:0;background:none;flex:none}
+.i-btn::before{content:"i";position:absolute;left:50%;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6875rem;line-height:1;opacity:.55;transition:opacity .3s,background .3s,border-color .3s}
+.i-btn{font-size:0}
+.i-btn:hover::before{opacity:1}
+html.notes .i-btn::before{opacity:1;background:var(--gold);border-color:var(--gold);color:#F2EEE6}
+.navbtn{width:44px;height:44px;justify-content:center;align-items:center;padding:0;gap:5px;flex:none}
+.navbtn i{width:22px}
+.back{min-height:44px;align-items:center}
+.mnav a{display:inline-flex;align-items:center;min-height:44px}
+.enter{padding-top:12px;padding-bottom:12px;align-items:center}
+.foot li{margin-bottom:0}
+.foot li a{display:inline-flex;align-items:center;min-height:42px}
+.nextprod a{min-height:64px}
+.rail a{min-height:22px}
+@media(pointer:coarse){
+  .rail a{min-height:34px}
+  .cities div a{min-height:44px}
+}
+
+/* 2. Small-screen masthead: the wordmark IS the back control on a house page. */
+@media(max-width:700px){
+  .mast-in{height:64px;gap:10px}
+  .logo{font-size:1.06rem;letter-spacing:.26em}
+  .mast .back,.mast .runorder{display:none}
+  .mast[data-house="1"] .logo::before{content:"\2190";font-family:var(--sans);font-size:.8rem;letter-spacing:0;margin-right:11px;opacity:.8}
+  .mnav{gap:2px}
+}
+@media(max-width:420px){
+  .logo{font-size:.95rem;letter-spacing:.2em}
+  .mast-in{padding-inline:16px}
+}
+/* the (i) lives in the drawer on small screens, where the bar has no room */
+.nav-note{display:none}
+@media(max-width:700px){
+  .mast .i-btn{display:none}
+  .nav-note{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:.625rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);min-height:44px}
+  .nav-note .i-btn{display:inline-flex;position:relative}
+}
+
+/* 3. Short viewports (phone landscape, small laptops): the hero must still breathe. */
+@media(max-height:560px){
+  .mast-in{height:56px}
+  .hero{min-height:100svh}
+  .hero-in{padding-bottom:28px}
+  .dsp-xl{font-size:clamp(2.1rem,8.5vh,3.6rem)}
+  .hero-sub{margin-top:12px;font-size:clamp(.95rem,2.6vh,1.15rem)}
+  .hero-foot{bottom:12px}
+  .nav-in{padding-block:76px 24px}
+  .nav-row{padding-block:6px}
+  .nav-row .nname{font-size:clamp(1.3rem,5.6vh,2rem)}
+}
+/* the drawer always scrolls rather than clipping */
+.nav-in{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+@media(max-width:560px){.nav-row .ncity{display:none}}
+
+/* 4. Very large screens: give the column presence instead of stranding it. */
+@media(min-width:1900px){:root{--max:1620px}}
+@media(min-width:2600px){:root{--max:1760px;--gut:clamp(20px,5vw,88px)}}
+
+/* 5. Coarse pointers get no hover-dependent information. */
+@media(hover:none){
+  .nav-thumb{display:none}
+  .house-row .fig{transform:none!important}
+}
+/* 6. iOS: kill the tap flash and lock the text size. */
+*{-webkit-tap-highlight-color:transparent}
+body{text-size-adjust:100%}
