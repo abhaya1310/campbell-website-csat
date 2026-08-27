@@ -1,0 +1,151 @@
+---
+import { Image } from 'astro:assets';
+import Programme from '../../layouts/Programme.astro';
+import Rise from '../../components/programme/Rise.astro';
+import SecHead from '../../components/programme/SecHead.astro';
+import Gap from '../../components/programme/Gap.astro';
+import Note from '../../components/programme/Note.astro';
+import Band from '../../components/programme/Band.astro';
+import { HOUSES, SHOTS } from '../../data/houses';
+import { SITE_URL } from '../../config/site';
+
+export function getStaticPaths() {
+  return HOUSES.map((h) => ({ params: { slug: h.slug }, props: { h } }));
+}
+const { h } = Astro.props;
+const i = HOUSES.indexOf(h);
+const prev = HOUSES[(i + HOUSES.length - 1) % HOUSES.length];
+const next = HOUSES[(i + 1) % HOUSES.length];
+const held = h.gallery.length + (h.hero ? 1 : 0);
+const gaps = SHOTS.slice(0, Math.max(1, 5 - held));
+const SECS: [string, string][] = [
+  ['01', 'The House'], ['02', 'The Table'], ['03', 'The Room'],
+  ['04', 'Occasions'], ['05', 'Plates'], ['06', 'Finding it'],
+];
+const schema = h.schemaType
+  ? [{
+      '@context': 'https://schema.org',
+      '@type': h.schemaType,
+      '@id': `${SITE_URL}/brands/${h.slug}`,
+      name: h.name,
+      description: h.body[0],
+      url: `${SITE_URL}/brands/${h.slug}`,
+      ...(h.cuisine.length ? { servesCuisine: h.cuisine } : {}),
+      parentOrganization: { '@id': `${SITE_URL}/#organization` },
+    }]
+  : [];
+---
+<Programme title={`${h.name} | Campbell India`} description={`${h.name} — ${h.category}, ${h.location}. ${h.body[0]}`} house={h.slug} jsonLd={schema}>
+  <nav class="rail" style={`--house:${h.ink}`} aria-label="Sections">
+    {SECS.map(([n]) => <a href={`#s${n}`} data-sec={`s${n}`}><span class="bar"></span>{n}</a>)}
+  </nav>
+
+  <section class="hero" style={`--house:${h.ink}`}>
+    {h.hero ? (
+      <div class="hero-img">
+        <div class="px"><Image src={h.hero} alt={h.name} widths={[900, 1400, 2000]} sizes="100vw" loading="eager" fetchpriority="high" /></div>
+      </div>
+    ) : (
+      <div class="hero-img" style="background:var(--ink);display:flex;align-items:center;justify-content:center">
+        <div style="max-width:540px;width:86%">
+          <Gap cls="ondark" label="Hero plate" what="A wide photograph of the room, shot at dusk" owe="Revealing Soon" />
+        </div>
+      </div>
+    )}
+    <div class="hero-in">
+      <div class="eyebrow rv-i">{h.n} &#183; {h.category} &#183; {h.location}</div>
+      <Rise tag="h1" cls="dsp-xl" lines={[`${h.name}.`]} />
+      <p class="hero-sub rv-i">{h.tagline}</p>
+    </div>
+    <div class="hero-foot"><span>Campbell &#8212; House {h.n} of 06</span><span class="cue"></span></div>
+  </section>
+
+  <div style={`--house:${h.ink}`}>
+    <section class="sec"><div class="wrap">
+      <SecHead n="01" title="The House" id="s01" />
+      <div class="split">
+        <div class="rv-i">
+          <div class="hr-n num" style="font-size:clamp(3.2rem,6.5vw,5.6rem);opacity:.26;margin-bottom:6px">{h.n}</div>
+          <Rise tag="h2" cls="dsp-m" lines={[`${h.category}.`]} />
+          <div class="hr-meta" style="margin-top:22px">{h.tags.map((t) => <span class="pill">{t}</span>)}</div>
+        </div>
+        <div class="rv-i">
+          {h.body.map((b) => <p class="body">{b}</p>)}
+          <Note title="Source">Verbatim from the copy Campbell supplied. Nothing added.</Note>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="sec" style="padding-top:0"><div class="wrap">
+      <SecHead n="02" title="The Table" id="s02" />
+      <div class="split">
+        <div>
+          {h.cuisine.length
+            ? <Rise tag="h2" cls="dsp-m" lines={h.cuisine.map((c) => `${c}.`)} />
+            : h.soon
+              ? <Rise tag="h2" cls="dsp-m" lines={['Kitchen', ['not yet announced.', true]]} />
+              : <Rise tag="h2" cls="dsp-m" lines={['No kitchen', ['on this house.', true]]} />}
+        </div>
+        <div class="rv-i">
+          <Gap label="Food &amp; drinks" what="Menu highlights, the chef, the signature dishes and the bar programme — three to four sentences" owe="Copy required" />
+        </div>
+      </div>
+    </div></section>
+
+    <section class="sec" style="padding-top:0"><div class="wrap">
+      <SecHead n="03" title="The Room" id="s03" />
+      <div class="g2">
+        <div>
+          {h.gallery[0]
+            ? <figure class="plate"><Image src={h.gallery[0]} alt="" widths={[600, 900, 1200]} sizes="(max-width:620px) 92vw, 44vw" style="aspect-ratio:4/5" /></figure>
+            : <div class="rv-i"><Gap cls="tall" label="Plate" what="Interior, wide — the room as a guest first sees it" owe="Shoot required" /></div>}
+        </div>
+        <div class="rv-i" style="align-self:center">
+          <Gap label="The experience" what="What the evening actually feels like — the arrival, the service, the music, the hours" owe="Copy required" />
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <Band quote={h.pull} attr={`${h.name} &#183; House ${h.n}`} ink={h.ink} />
+
+  <div style={`--house:${h.ink}`}>
+    <section class="sec"><div class="wrap">
+      <SecHead n="04" title="Occasions" id="s04" />
+      <div class="rv-i">
+        <Gap cls="wide" label="Private events" what="Capacities per space, the kinds of occasion hosted, and one enquiry route" owe="Copy required — and a decision on where an enquiry goes" />
+      </div>
+    </div></section>
+
+    <section class="sec" style="padding-top:0"><div class="wrap">
+      <SecHead n="05" title="Plates" id="s05" />
+      <div class="g2">
+        {h.gallery.map((g, k) => (
+          <figure class="plate"><Image src={g} alt="" widths={[600, 900, 1200]} sizes="(max-width:620px) 92vw, 44vw" style={`aspect-ratio:${k % 2 ? '3/4' : '4/3'}`} /></figure>
+        ))}
+        {gaps.map((s, k) => (
+          <div class="rv-i"><Gap label={`Plate ${String(k + 1 + h.gallery.length).padStart(2, '0')}`} what={s} owe="Shoot required" /></div>
+        ))}
+      </div>
+      {h.rejected && <Note title="Asset rejected">{h.rejected}</Note>}
+      <Note title="Photography">
+        This house currently holds {held} usable {held === 1 ? 'photograph' : 'photographs'}. The gallery as designed needs six to eight.
+      </Note>
+    </div></section>
+
+    <section class="sec" style="padding-top:0"><div class="wrap">
+      <SecHead n="06" title="Finding it" id="s06" />
+      <div class="split">
+        <div><Rise tag="h2" cls="dsp-m" lines={[h.location]} /></div>
+        <div class="rv-i">
+          <Gap label="Address &amp; hours" what="Full street address, opening hours per day, and a map reference for each city" owe="Client facts required" />
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <nav class="nextprod" aria-label="Other houses">
+    <a href={`/brands/${prev.slug}`}><div class="k">&#8592; House {prev.n}</div><div class="v">{prev.name}</div></a>
+    <a href={`/brands/${next.slug}`} class="r"><div class="k">House {next.n} &#8594;</div><div class="v">{next.name}</div></a>
+  </nav>
+</Programme>

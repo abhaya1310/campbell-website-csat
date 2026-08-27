@@ -1,0 +1,5 @@
+---
+interface Props { n: string; title: string; id?: string }
+const { n, title, id } = Astro.props;
+---
+<div class="sechead" id={id}><span class="n num" set:html={n} /><span class="eyebrow">{title}</span></div>

@@ -24,12 +24,24 @@ export const SITE = {
     'Campbell India is a luxury hospitality house redefining dining and nightlife — blending global sophistication with Indian warmth. Home to Cosy Box, Toy Room, Ophelia, Meette, Louve and Dodicci.',
 };
 
-/** ⚠️ UNVERIFIED — confirm every address with the client before go-live. */
+/**
+ * Enquiry addresses.
+ *
+ * These were INVENTED during the first build and were never confirmed by
+ * Campbell. Shipping them would point real enquiries at mailboxes that may not
+ * exist, so they are empty: the contact page renders its routes and its form
+ * only when a real destination exists, and the Organization schema omits
+ * `email` entirely rather than publishing a guess.
+ *
+ * To turn enquiries on: put a CONFIRMED address in `general` (and any of the
+ * others you actually operate), or set PUBLIC_FORMSPREE_ID. Nothing else needs
+ * to change.
+ */
 export const EMAILS = {
-  general: 'hello@campbellindia.com',
-  partnerships: 'partnerships@campbellindia.com',
-  events: 'events@campbellindia.com',
-  press: 'press@campbellindia.com',
+  general: '',
+  partnerships: '',
+  events: '',
+  press: '',
 };
 
 /** ⚠️ UNVERIFIED — confirm before go-live. Empty string hides the row. */

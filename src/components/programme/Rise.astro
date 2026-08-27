@@ -1,0 +1,10 @@
+---
+/** Display type that climbs out from behind a mask, one line at a time. */
+interface Props { tag?: string; cls?: string; lines: (string | [string, boolean])[] }
+const { tag = 'h2', cls = 'dsp-m', lines } = Astro.props;
+const Tag = tag as any;
+const rows = lines.map((l) => (Array.isArray(l) ? l : [l, false] as [string, boolean]));
+---
+<Tag class={`dsp ${cls} rise`}>
+  {rows.map(([text, italic]) => <span class="ln"><b class={italic ? 'it' : undefined}>{text}</b></span>)}
+</Tag>

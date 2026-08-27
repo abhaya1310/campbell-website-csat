@@ -1,0 +1,32 @@
+---
+import Programme from '../../layouts/Programme.astro';
+import SecHead from '../../components/programme/SecHead.astro';
+import HouseRow from '../../components/programme/HouseRow.astro';
+import Rise from '../../components/programme/Rise.astro';
+import { HOUSES } from '../../data/houses';
+import { SITE_URL } from '../../config/site';
+
+const description =
+  'Six houses, one standard of luxury — Louve, Cosy Box, Toy Room, Ophelia, Meette and Dodicci.';
+const schemas = HOUSES.filter((h) => h.schemaType).map((h) => ({
+  '@context': 'https://schema.org',
+  '@type': h.schemaType as string,
+  '@id': `${SITE_URL}/brands/${h.slug}`,
+  name: h.name,
+  description: h.body[0],
+  url: `${SITE_URL}/brands/${h.slug}`,
+  ...(h.cuisine.length ? { servesCuisine: h.cuisine } : {}),
+  parentOrganization: { '@id': `${SITE_URL}/#organization` },
+}));
+---
+<Programme title="The Houses | Campbell India" description={description} jsonLd={schemas}>
+  <section class="sec pagehead"><div class="wrap">
+    <div class="eyebrow rv-i">The season &#183; 01 &#8212; 06</div>
+    <Rise tag="h1" cls="dsp-l" lines={['The Houses.']} />
+    <p class="lede rv-i" style="margin-top:22px;max-width:34ch">Six worlds under one name. No two of them run the same evening.</p>
+  </div></section>
+  <section class="sec" style="padding-top:0;padding-bottom:0"><div class="wrap">
+    <SecHead n="01 &#8212; 06" title="The bill" />
+    <div class="bill">{HOUSES.map((x) => <HouseRow house={x} />)}</div>
+  </div></section>
+</Programme>

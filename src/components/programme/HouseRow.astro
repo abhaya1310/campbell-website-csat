@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import Gap from './Gap.astro';
+import type { House } from '../../data/houses';
+interface Props { house: House }
+const { house: x } = Astro.props;
+---
+<article class="house-row" style={`--house:${x.ink}`}>
+  {x.hero ? (
+    <a class="fig" href={`/brands/${x.slug}`} aria-label={`Enter ${x.name}`}>
+      <Image src={x.hero} alt={x.name} widths={[600, 900, 1200]} sizes="(max-width:860px) 92vw, 44vw" />
+    </a>
+  ) : (
+    <div class="fig" style="clip-path:none">
+      <Gap label="Plate 01" what="A first photograph of Dodicci" owe="Revealing Soon" />
+    </div>
+  )}
+  <div class="rv-i">
+    <div class="hr-n num">{x.n}</div>
+    <h3 class="hr-name">{x.name}</h3>
+    <div class="hr-meta"><span class="pill">{x.category}</span><span class="city">{x.location}</span></div>
+    <p class="tagline">{x.tagline}</p>
+    {x.soon
+      ? <span class="enter" style="opacity:.45;pointer-events:none">Revealing soon</span>
+      : <a class="enter" href={`/brands/${x.slug}`}>Enter the house <span class="ar">&#8594;</span></a>}
+  </div>
+</article>
