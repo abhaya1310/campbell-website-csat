@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" class="home">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campbell — back matter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="programme.css">
+<style>
+/* ============================================================
+   BACK MATTER — new rules only. Everything else is the shipped system.
+
+   Concept: the back of the programme is its BACK MATTER — disciplines as a
+   numbered index, the credo on the one dark leaf, where it plays, what the
+   notices said, an appeal to sponsors. Each has its own form because each
+   is a different kind of statement.
+   ============================================================ */
+
+/* --- 1. THE INDEX (Our World). Numbered rows, not a card grid.
+       A list of disciplines is an index, so it takes index form. --- */
+.index{border-top:1px solid var(--rule)}
+.idx{
+  display:grid;
+  grid-template-columns:auto minmax(0,.72fr) minmax(0,1.5fr);
+  gap:clamp(14px,4vw,56px);
+  align-items:baseline;
+  padding:clamp(20px,2.5vw,30px) 0;
+  border-bottom:1px solid var(--rule);
+}
+.idx .fol{font-family:var(--serif);font-variant-numeric:lining-nums tabular-nums;
+  font-size:.9rem;color:var(--gold-text);letter-spacing:.04em}
+.idx h4{font-family:var(--serif);font-size:clamp(1.45rem,2.5vw,2.05rem);
+  font-weight:400;line-height:1.08;letter-spacing:-.01em}
+.idx p{font-size:clamp(.95rem,1.05vw,1.0625rem);line-height:1.7;color:var(--ink-2);max-width:56ch}
+@media(max-width:760px){
+  .idx{grid-template-columns:auto 1fr;gap:6px 18px}
+  .idx p{grid-column:2}
+}
+
+/* --- 2. THE LEAF (The Campbell Standard). The page's ONE dark field.
+       Colour is bought by AREA (2026-08-27 ruling) and the area is spent
+       on the thesis, not scattered. --- */
+.leaf{background:var(--ink);color:#F6F2EA;padding-block:clamp(76px,11vw,150px);
+  position:relative;overflow:hidden}
+.leaf .sechead{border-bottom-color:rgba(246,242,234,.20)}
+.leaf .sechead .eyebrow{color:rgba(246,242,234,.60)}
+.leaf .sechead .n{color:#C9A464}
+.leaf .dsp{color:#F6F2EA}
+.leaf::after{content:"";position:absolute;right:calc(var(--gut)*-.2);bottom:-16%;
+  width:min(44vw,500px);aspect-ratio:1;border:1px solid rgba(201,164,100,.22);
+  border-radius:50%;pointer-events:none}
+.tenets{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(18px,2.6vw,40px);
+  margin-top:clamp(46px,6vw,84px);position:relative;z-index:1}
+.tenet{border-top:1px solid rgba(201,164,100,.42);padding-top:20px}
+.tenet h4{font-family:var(--serif);font-size:clamp(1.15rem,1.7vw,1.5rem);
+  font-weight:400;margin-bottom:11px;color:#F6F2EA;line-height:1.15}
+.tenet p{font-size:.875rem;line-height:1.7;color:rgba(246,242,234,.70)}
+@media(max-width:1020px){.tenets{grid-template-columns:repeat(2,1fr);gap:30px}}
+@media(max-width:560px){.tenets{grid-template-columns:1fr}}
+
+/* --- 3. THE NOTICES (In Good Company). Acclaim is a quoted citation with an
+       attributing body — NOT the same component as the city index. --- */
+.notices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,5vw,80px)}
+.notice{text-align:center;padding-top:8px}
+.notice::before{content:"";display:block;width:24px;height:1px;
+  background:var(--gold);margin:0 auto clamp(20px,2.6vw,28px)}
+.notice .cite{font-family:var(--serif);font-size:clamp(1.1rem,1.9vw,1.45rem);
+  line-height:1.32;letter-spacing:-.005em}
+.notice .src{font-size:.6875rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:clamp(12px,1.6vw,18px)}
+@media(max-width:720px){.notices{grid-template-columns:1fr;gap:40px}}
+
+/* --- 4. THE APPEAL (Partnerships). The only section that asks something of
+       the reader, so it is the only one carrying a photograph. --- */
+.appeal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,80px);align-items:center}
+.appeal .plate img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+@media(max-width:860px){.appeal{grid-template-columns:1fr;gap:34px}}
+
+/* --- 5. THE COLOPHON (Closing). Terminal. Gets air above it and a rule,
+       so it reads as the last word and not an orphaned paragraph. --- */
+.colophon{border-top:1px solid var(--rule);text-align:center;
+  padding-block:clamp(80px,12vw,160px)}
+.colophon .dsp{margin-bottom:clamp(26px,3.4vw,40px)}
+.colophon p{font-size:clamp(.95rem,1.05vw,1.0625rem);line-height:1.75;
+  color:var(--ink-2);max-width:46ch;margin-inline:auto}
+.colophon .enter{margin-top:clamp(30px,4vw,46px)}
+
+/* mock only: reveals off so the page renders statically for review */
+.rise .ln>b{transform:none;opacity:1}
+</style>
+</head>
+<body>
+
+<main>
+
+  <!-- tail of the running order, for the seam -->
+  <section class="sec" style="padding-bottom:0"><div class="wrap">
+    <div class="sechead"><span class="n num">01 — 06</span><span class="eyebrow">The Houses</span></div>
+    <p class="body" style="color:var(--ink-3);font-style:italic">&#8230; the bill of six houses sits here, unchanged &#8230;</p>
+  </div></section>
+
+  <!-- 1. THE INDEX -->
+  <section class="sec"><div class="wrap">
+    <div class="sechead"><span class="n num">—</span><span class="eyebrow">Our World</span></div>
+    <div class="split" style="margin-bottom:clamp(40px,5vw,64px)">
+      <div><h2 class="dsp dsp-m">From dining rooms<br><i>to dance floors.</i></h2></div>
+      <div><p class="body">Campbell exists across the full spectrum of contemporary hospitality.</p></div>
+    </div>
+    <div class="index">
+      <div class="idx"><span class="fol">01</span><h4>Restaurants</h4><p>Dining experiences built around food, design and conversation.</p></div>
+      <div class="idx"><span class="fol">02</span><h4>Bars</h4><p>Considered cocktails, distinctive spaces and evenings that unfold slowly.</p></div>
+      <div class="idx"><span class="fol">03</span><h4>Nightlife</h4><p>Music-led destinations made for the after-dark.</p></div>
+      <div class="idx"><span class="fol">04</span><h4>Patisserie</h4><p>Handcrafted creations where technique meets imagination.</p></div>
+      <div class="idx"><span class="fol">05</span><h4>Private Experiences</h4><p>Celebrations, launches, dinners and occasions designed around the guest.</p></div>
+    </div>
+  </div></section>
+
+  <!-- 2. THE LEAF -->
+  <section class="leaf"><div class="wrap">
+    <div class="sechead"><span class="n num">—</span><span class="eyebrow">The Campbell Standard</span></div>
+    <h2 class="dsp dsp-m">What brings every<br><i>house together?</i></h2>
+    <div class="tenets">
+      <div class="tenet"><h4>Design</h4><p>Spaces that have a point of view.</p></div>
+      <div class="tenet"><h4>Culinary Craft</h4><p>Food that respects its ingredients and its story.</p></div>
+      <div class="tenet"><h4>Hospitality</h4><p>Service that feels intuitive, personal and effortless.</p></div>
+      <div class="tenet"><h4>Culture</h4><p>Music, art, fashion and people shaping every experience.</p></div>
+      <div class="tenet"><h4>Experience</h4><p>Because a great restaurant is more than what is on the plate.</p></div>
+    </div>
+  </div></section>
+
+  <!-- 3. PRESENCE -->
+  <section class="sec"><div class="wrap">
+    <div class="sechead"><span class="n num">—</span><span class="eyebrow">Where to find us</span></div>
+    <div class="split" style="margin-bottom:44px">
+      <h2 class="dsp dsp-m">From Delhi,<br><i>outward.</i></h2>
+      <div></div>
+    </div>
+    <div class="cities">
+      <div><div class="cn">New Delhi</div><div class="cc">Louve &#183; Ophelia &#183; Dodicci &#183; Meette &#183; Cosy Box &#183; Toy Room</div></div>
+      <div><div class="cn">Gurugram</div><div class="cc">Cosy Box</div></div>
+      <div><div class="cn">Mumbai</div><div class="cc">Cosy Box &#183; Toy Room</div></div>
+      <div><div class="cn">Kolkata</div><div class="cc">Campbell portfolio presence</div></div>
+      <div><div class="cn">Pune</div><div class="cc">Campbell portfolio presence</div></div>
+    </div>
+  </div></section>
+
+  <!-- 4. THE NOTICES -->
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="sechead"><span class="n num">—</span><span class="eyebrow">In Good Company</span></div>
+    <div class="notices">
+      <div class="notice">
+        <div class="cite">Official Food Partner</div>
+        <div class="src">Cannes Film Festival &#183; Cosy Box</div>
+      </div>
+      <div class="notice">
+        <div class="cite">Top 50 Powerful Women in Luxury</div>
+        <div class="src">LuxeBook</div>
+      </div>
+      <div class="notice">
+        <div class="cite">The Ashok</div>
+        <div class="src">New Delhi</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 5. THE APPEAL -->
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="sechead"><span class="n num">—</span><span class="eyebrow">Partnerships</span></div>
+    <div class="appeal">
+      <div class="plate"><img src="../../../src/assets/images/gallery-cosybox.jpg" alt=""></div>
+      <div>
+        <h2 class="dsp dsp-m" style="margin-bottom:26px">Let's create something<br><i>worth talking about.</i></h2>
+        <p class="body">From private dining and celebrations to brand collaborations, cultural events and media partnerships, Campbell works with brands and people who share a passion for creating memorable experiences.</p>
+        <div class="tags">
+          <span class="pill">Private Events</span>
+          <span class="pill">Brand Collaborations</span>
+          <span class="pill">Media &amp; Press</span>
+          <span class="pill">Partnerships</span>
+        </div>
+        <p style="margin-top:30px"><a href="#" class="enter">Start a conversation <span class="ar">&#8594;</span></a></p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 6. THE COLOPHON -->
+  <section><div class="wrap">
+    <div class="colophon">
+      <h2 class="dsp dsp-l">Six houses.<br><i>One hospitality philosophy.</i></h2>
+      <p>Different names. Different worlds. Different ways of bringing people together.</p>
+      <p style="margin-top:1.1em">But behind them all is Campbell India.</p>
+      <p><a href="#" class="enter">Discover the houses <span class="ar">&#8594;</span></a></p>
+    </div>
+  </div></section>
+
+</main>
+
+</body>
+</html>

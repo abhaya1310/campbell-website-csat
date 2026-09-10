@@ -4,14 +4,13 @@ import Programme from '../layouts/Programme.astro';
 import Rise from '../components/programme/Rise.astro';
 import SecHead from '../components/programme/SecHead.astro';
 import HouseRow from '../components/programme/HouseRow.astro';
-import Band from '../components/programme/Band.astro';
-import Note from '../components/programme/Note.astro';
-import { HOUSES, CITY_MAP, PILLARS } from '../data/houses';
+import { HOUSES, CITY_MAP, PILLARS, STANDARDS, PRESS } from '../data/houses';
 import atmosphere from '../assets/images/atmosphere.jpg';
 import galleryLouve from '../assets/images/gallery-louve.jpg';
+import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
 
 const description =
-  'Six houses under one name — Louve, Cosy Box, Toy Room, Ophelia, Meette and Dodicci. Dining, patisserie and nightlife across five Indian cities.';
+  'A collection of extraordinary hospitality experiences, shaped for modern India. Six houses — Louve, Cosy Box, Toy Room, Ophelia, Meette and Dodicci.';
 ---
 <Programme title="Campbell India | The Houses" description={description}>
   <section class="hero">
@@ -19,9 +18,9 @@ const description =
       <div class="px"><Image src={atmosphere} alt="" widths={[900, 1400, 2000]} sizes="100vw" loading="eager" fetchpriority="high" /></div>
     </div>
     <div class="hero-in">
-      <div class="eyebrow rv-i">Campbell India &#183; The Season</div>
-      <Rise tag="h1" cls="dsp-xl" lines={['The Houses.']} />
-      <p class="hero-sub rv-i">Six worlds under one name. Dining, patisserie and nightlife across five Indian cities.</p>
+      <div class="eyebrow rv-i">Hospitality &#183; Culture &#183; Experience</div>
+      <Rise tag="h1" cls="dsp-xl" lines={['Places people', ['remember.', true]]} />
+      <p class="hero-sub rv-i">A collection of extraordinary hospitality experiences, shaped for modern India.</p>
     </div>
     <div class="hero-foot"><span>01 &#8212; 06</span><span class="cue"></span></div>
   </section>
@@ -29,13 +28,11 @@ const description =
   <section class="sec" id="the-house"><div class="wrap">
     <SecHead n="&#8212;" title="The House" />
     <div class="split">
-      <div><Rise tag="h2" cls="dsp-l" lines={['Six houses.', ['One standard.', true]]} /></div>
+      <div><Rise tag="h2" cls="dsp-l" lines={['Six houses.', ['Infinite ways to', true], ['experience hospitality.', true]]} /></div>
       <div class="rv-i">
-        <p class="lede" style="margin-bottom:26px">Campbell Property &amp; Hospitality was founded in 2019. It runs six houses across five Indian cities.</p>
-        <p class="body">A flagship in New Delhi. A Cannes import in four cities. An internationally recognised club. A Renaissance restaurant and bar. An atelier patisserie working since 2015. And one house still taking shape.</p>
-        <Note title="Copy status">
-          Every outlet detail on this site — name, category, location, status and body copy — is verbatim from the copy Campbell supplied. Only the one-line taglines are new, and each compresses that house&#8217;s own paragraph.
-        </Note>
+        <p class="lede" style="margin-bottom:26px">Campbell India creates and operates hospitality destinations designed to be remembered.</p>
+        <p class="body">From refined dining and artisanal patisserie to high-energy nightlife, every house has its own personality, purpose and point of view.</p>
+        <p class="body">What connects them is simple — exceptional spaces, thoughtful food, considered service and experiences that stay with you.</p>
       </div>
     </div>
     <div class="plate" style="margin-top:clamp(48px,7vw,88px)">
@@ -48,33 +45,90 @@ const description =
     <div class="bill">{HOUSES.map((x) => <HouseRow house={x} />)}</div>
   </div></section>
 
-  <Band quote="Six houses, one standard of luxury." attr="Campbell Property &amp; Hospitality" />
-
+  {/* --- back matter: index --- */}
   <section class="sec"><div class="wrap">
-    <SecHead n="&#8212;" title="What we do" />
-    <div class="g3">
+    <SecHead n="&#8212;" title="Our World" />
+    <div class="split" style="margin-bottom:clamp(40px,5vw,64px)">
+      <div><Rise tag="h2" cls="dsp-m" lines={['From dining rooms', ['to dance floors.', true]]} /></div>
+      <div class="rv-i"><p class="body">Campbell exists across the full spectrum of contemporary hospitality.</p></div>
+    </div>
+    <div class="index">
       {PILLARS.map(([name, copy], i) => (
-        <div class="pillar rv-i">
-          <div class="eyebrow" style="margin-bottom:14px">0{i + 1}</div>
+        <div class="idx rv-i">
+          <span class="fol">0{i + 1}</span>
           <h4>{name}</h4>
-          <p class="body">{copy}</p>
+          <p>{copy}</p>
         </div>
       ))}
     </div>
   </div></section>
 
-  <section class="sec" id="locations" style="padding-top:0"><div class="wrap">
+  {/* --- back matter: the leaf, the page's one dark field --- */}
+  <section class="leaf" data-band="1"><div class="wrap">
+    <SecHead n="&#8212;" title="The Campbell Standard" />
+    <Rise tag="h2" cls="dsp-m" lines={['What brings every', ['house together?', true]]} />
+    <div class="tenets">
+      {STANDARDS.map(([name, copy]) => (
+        <div class="tenet rv-i">
+          <h4>{name}</h4>
+          <p>{copy}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  {/* --- back matter: where it plays --- */}
+  <section class="sec" id="locations"><div class="wrap">
     <SecHead n="&#8212;" title="Where to find us" />
     <div class="split" style="margin-bottom:44px">
-      <Rise tag="h2" cls="dsp-m" lines={['Five cities.', ['Six houses.', true]]} />
-      <div class="rv-i">
-        <Note title="Unverified">
-          The city-to-house mapping below is read off Campbell&#8217;s own brand copy. Exact room counts and street addresses per city have never been supplied, and none are stated here.
-        </Note>
-      </div>
+      <Rise tag="h2" cls="dsp-m" lines={['From Delhi,', ['outward.', true]]} />
+      <div></div>
     </div>
     <div class="cities rv-i">
       {CITY_MAP.map(([city, houses]) => <div><div class="cn">{city}</div><div class="cc">{houses}</div></div>)}
+    </div>
+  </div></section>
+
+  {/* --- back matter: the notices --- */}
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <SecHead n="&#8212;" title="In Good Company" />
+    <div class="notices">
+      {PRESS.map(([name, detail]) => (
+        <div class="notice rv-i">
+          <div class="cite">{name}</div>
+          <div class="src">{detail}</div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  {/* --- back matter: the appeal --- */}
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <SecHead n="&#8212;" title="Partnerships" />
+    <div class="appeal">
+      <figure class="plate">
+        <Image src={galleryCosybox} alt="" widths={[600, 900, 1200]} sizes="(max-width:860px) 92vw, 44vw" style="aspect-ratio:4/3" />
+      </figure>
+      <div class="rv-i">
+        <Rise tag="h2" cls="dsp-m" lines={["Let's create something", ['worth talking about.', true]]} />
+        <p class="body" style="margin-top:26px">From private dining and celebrations to brand collaborations, cultural events and media partnerships, Campbell works with brands and people who share a passion for creating memorable experiences.</p>
+        <div class="tags">
+          {['Private Events', 'Brand Collaborations', 'Media & Press', 'Partnerships'].map((t) => <span class="pill">{t}</span>)}
+        </div>
+        <p><a href="/contact" class="enter">Start a conversation <span class="ar">&#8594;</span></a></p>
+      </div>
+    </div>
+  </div></section>
+
+  {/* --- back matter: the colophon --- */}
+  <section><div class="wrap">
+    <div class="colophon">
+      <Rise tag="h2" cls="dsp-l" lines={['Six houses.', ['One hospitality philosophy.', true]]} />
+      <div class="rv-i">
+        <p>Different names. Different worlds. Different ways of bringing people together.</p>
+        <p style="margin-top:1.1em">But behind them all is Campbell India.</p>
+        <p><a href="/brands" class="enter">Discover the houses <span class="ar">&#8594;</span></a></p>
+      </div>
     </div>
   </div></section>
 </Programme>

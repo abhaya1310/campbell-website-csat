@@ -3,14 +3,13 @@ import { Image } from 'astro:assets';
 import Programme from '../layouts/Programme.astro';
 import Rise from '../components/programme/Rise.astro';
 import SecHead from '../components/programme/SecHead.astro';
-import Band from '../components/programme/Band.astro';
 import { SITE, SITE_URL } from '../config/site';
-import { HOUSES, PILLARS } from '../data/houses';
+import { HOUSES, PILLARS, STANDARDS } from '../data/houses';
 import atmosphere from '../assets/images/atmosphere.jpg';
 import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
 
 const description =
-  'Founded in 2019, Campbell India operates at the intersection of fine dining, lifestyle and entertainment — from Michelin-style cuisine to world-renowned nightlife across Delhi, Mumbai, Kolkata and Pune.';
+  'Campbell India creates and operates hospitality destinations designed to be remembered — from refined dining and artisanal patisserie to high-energy nightlife.';
 const schema = [{
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
@@ -32,10 +31,11 @@ const schema = [{
   <section class="sec"><div class="wrap">
     <SecHead n="&#8212;" title="Background" />
     <div class="split">
-      <div><Rise tag="h2" cls="dsp-m" lines={['Built at the intersection of', ['dining, lifestyle', true], ['and entertainment.', true]]} /></div>
+      <div><Rise tag="h2" cls="dsp-m" lines={['Six houses.', ['Infinite ways to', true], ['experience hospitality.', true]]} /></div>
       <div class="rv-i">
-        <p class="body">Founded with a passion for creating unforgettable hospitality experiences, our brand portfolio includes Cosy Box, Ophelia, Toy Room, Meette, Louve and Dodicci — each uniquely positioned at the intersection of fine dining, lifestyle and entertainment.</p>
-        <p class="body">From Michelin-style cuisine to world-renowned nightlife, our presence in major cities like Delhi, Mumbai, Kolkata and Pune reflects a deep understanding of urban tastes and a commitment to delivering elevated, culturally resonant experiences.</p>
+        <p class="body">Campbell India creates and operates hospitality destinations designed to be remembered.</p>
+        <p class="body">From refined dining and artisanal patisserie to high-energy nightlife, every house has its own personality, purpose and point of view.</p>
+        <p class="body">What connects them is simple — exceptional spaces, thoughtful food, considered service and experiences that stay with you.</p>
       </div>
     </div>
     <div class="plate" style="margin-top:clamp(48px,7vw,88px)">
@@ -43,16 +43,27 @@ const schema = [{
     </div>
   </div></section>
 
-  <Band quote="Operating at the forefront of India's evolving luxury hospitality landscape." attr="Campbell Property &amp; Hospitality" />
-
   <section class="sec"><div class="wrap">
-    <SecHead n="&#8212;" title="What we do" />
-    <div class="g3">
+    <SecHead n="&#8212;" title="Our World" />
+    <div class="index">
       {PILLARS.map(([name, copy], i) => (
-        <div class="pillar rv-i">
-          <div class="eyebrow" style="margin-bottom:14px">0{i + 1}</div>
+        <div class="idx rv-i">
+          <span class="fol">0{i + 1}</span>
           <h4>{name}</h4>
-          <p class="body">{copy}</p>
+          <p>{copy}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="leaf" data-band="1"><div class="wrap">
+    <SecHead n="&#8212;" title="The Campbell Standard" />
+    <Rise tag="h2" cls="dsp-m" lines={['What brings every', ['house together?', true]]} />
+    <div class="tenets">
+      {STANDARDS.map(([name, copy]) => (
+        <div class="tenet rv-i">
+          <h4>{name}</h4>
+          <p>{copy}</p>
         </div>
       ))}
     </div>
