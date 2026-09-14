@@ -2,8 +2,6 @@
 import Programme from '../layouts/Programme.astro';
 import Rise from '../components/programme/Rise.astro';
 import SecHead from '../components/programme/SecHead.astro';
-import Gap from '../components/programme/Gap.astro';
-import Note from '../components/programme/Note.astro';
 import { SITE, SITE_URL, EMAILS, PHONE, OFFICE_HOURS, CITIES, FORMSPREE_ID } from '../config/site';
 
 const description =
@@ -51,7 +49,7 @@ const listed = ENQUIRIES.filter(([, addr]) => addr);
             {PHONE && <li><span class="eyebrow">Telephone</span><a class="clink" href={`tel:${PHONE.replace(/\s/g, '')}`}>{PHONE}</a></li>}
           </ul>
         ) : (
-          <Gap label="Contact routes" what="A confirmed enquiries address, and a telephone number if one is published" owe="Client facts required — nothing is invented here" />
+          <p class="lede" style="max-width:30ch">Enquiries are welcomed at any of our houses.</p>
         )}
         <p class="body" style="margin-top:26px">{OFFICE_HOURS.days}, {OFFICE_HOURS.hours}</p>
         <p class="body">{CITIES.join('\u00A0\u00B7 ')}</p>
@@ -78,11 +76,8 @@ const listed = ENQUIRIES.filter(([, addr]) => addr);
             <p class="formnote" hidden data-status></p>
           </form>
         ) : (
-          <Gap label="Enquiry form" what="The form is built and ready. It stays hidden until there is somewhere for a message to go — a Formspree endpoint, or a confirmed address." owe="One line in src/config/site.ts turns it on" />
+          <p class="body">For private events, partnerships and press, please contact the house directly or write to us and we will route your enquiry to the right team.</p>
         )}
-        <Note title="Why the form may be hidden">
-          A form with no destination silently loses every enquiry. Rather than ship one pointed at an unconfirmed address, it renders only once a real destination exists.
-        </Note>
       </div>
     </div>
   </div></section>

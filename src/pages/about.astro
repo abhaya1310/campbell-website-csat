@@ -19,9 +19,9 @@ const schema = [{
   mainEntity: { '@id': `${SITE_URL}/#organization` },
 }];
 ---
-<Programme title="The House | Campbell India" description={description} jsonLd={schema}>
+<Programme title="About Campbell | Campbell India" description={description} jsonLd={schema}>
   <section class="hero hero-short">
-    <div class="hero-img"><div class="px"><Image src={atmosphere} alt="" widths={[900, 1400, 2000]} sizes="100vw" loading="eager" fetchpriority="high" /></div></div>
+    <div class="hero-img"><div class="px"><Image src={atmosphere} alt="" widths={[1200, 1800, 2400, 3000]} sizes="100vw" loading="eager" fetchpriority="high" /></div></div>
     <div class="hero-in">
       <div class="eyebrow rv-i">Since 2019</div>
       <Rise tag="h1" cls="dsp-l" lines={['A passion for', ['unforgettable hospitality.', true]]} />
@@ -39,7 +39,7 @@ const schema = [{
       </div>
     </div>
     <div class="plate" style="margin-top:clamp(48px,7vw,88px)">
-      <div class="px"><Image src={galleryCosybox} alt="Interior detail from Cosy Box" widths={[900, 1400, 2000]} sizes="100vw" style="aspect-ratio:21/8" /></div>
+      <div class="px"><Image src={galleryCosybox} alt="Interior detail from Cosy Box" widths={[1200, 1800, 2400, 3000]} sizes="100vw" style="aspect-ratio:21/8" /></div>
     </div>
   </div></section>
 
@@ -70,7 +70,7 @@ const schema = [{
   </div></section>
 
   <section class="sec" style="padding-top:0"><div class="wrap">
-    <SecHead n="01 &#8212; 06" title="The Houses" />
+    <SecHead n="01 &#8212; 06" title="Our Houses" />
     <div class="cities rv-i">
       {HOUSES.map((x) => (
         <div style={`--house:${x.ink}`}>

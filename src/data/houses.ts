@@ -23,6 +23,8 @@ import galleryOphelia from '../assets/images/gallery-ophelia.jpg';
 import galleryMeette from '../assets/images/gallery-meette.jpg';
 import galleryDish from '../assets/images/gallery-dish.jpg';
 import brandOphelia from '../assets/images/brand-ophelia.jpg';
+import brandDodicci from '../assets/images/brand-dodicci.jpg';
+import galleryDodicci from '../assets/images/gallery-dodicci.jpg';
 
 export interface House {
   slug: string;
@@ -115,14 +117,12 @@ export const HOUSES: House[] = [
     category: 'The Newest House', location: 'New Delhi · The Ashok', ink: '#9A4A22',
     tagline: 'A new chapter in dining.',
     pull: 'A new expression of dining at The Ashok, Chanakyapuri.',
-    tags: ['Coming Soon'],
+    tags: ['Now Open'],
     cuisine: [],
     body: [
       'A contemporary addition to Campbell’s hospitality portfolio, Dodicci brings a new expression of dining to The Ashok, Chanakyapuri.',
     ],
-    // No photograph exists. brand-patiala.jpg is an orphan of Royal House of
-    // Patiala, the house that used to occupy slot 06 — never reuse it here.
-    hero: null, gallery: [], schemaType: null, soon: true,
+    hero: brandDodicci, gallery: [galleryDodicci], schemaType: 'Restaurant',
   },
 ];
 

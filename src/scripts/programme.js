@@ -10,7 +10,7 @@
 const RM = window.matchMedia('(prefers-reduced-motion: reduce)');
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-let raf = null, px = [], rail = [], mastEl = null, progEl = null, lastY = 0;
+let raf = null, px = [], mastEl = null, progEl = null, lastY = 0;
 
 function closeNav() {
   document.documentElement.classList.remove('navopen');
@@ -31,7 +31,6 @@ function frame() {
     const solid = y > vh - 90;
     mastEl.classList.toggle('solid', solid);
     mastEl.classList.toggle('onphoto', !solid);
-    mastEl.classList.toggle('up', y > lastY && y > vh * 0.9 && !document.documentElement.classList.contains('navopen'));
   }
   lastY = y;
   if (!RM.matches) {
@@ -39,23 +38,6 @@ function frame() {
       const r = el.parentElement.getBoundingClientRect();
       if (r.bottom < -200 || r.top > vh + 200) continue;
       el.style.transform = 'translate3d(0,' + (((r.top + r.height / 2 - vh / 2) / vh) * -7).toFixed(2) + '%,0)';
-    }
-  }
-  if (rail.length) {
-    // A rail sitting over a full-bleed ink band must invert, or it vanishes.
-    const mid = vh / 2;
-    let over = false;
-    for (const bd of document.querySelectorAll('[data-band]')) {
-      const r = bd.getBoundingClientRect();
-      if (r.top < mid && r.bottom > mid) { over = true; break; }
-    }
-    document.documentElement.classList.toggle('onink', over);
-    document.documentElement.classList.toggle('railon', y > vh * 0.78);
-    for (const a of rail) {
-      const t = document.getElementById(a.dataset.sec);
-      if (!t) continue;
-      const r = t.getBoundingClientRect();
-      a.classList.toggle('act', (r.top < vh * 0.42 && r.bottom > 0) || (r.top < 0 && r.top > -t.offsetHeight));
     }
   }
   raf = null;
@@ -67,7 +49,6 @@ function init() {
   mastEl = document.getElementById('mast');
   progEl = document.getElementById('prog');
   px = [...document.querySelectorAll('.px')];
-  rail = [...document.querySelectorAll('.rail a')];
 
   const hero = document.querySelector('.hero');
   const ink = hero ? getComputedStyle(hero).getPropertyValue('--house').trim() : '';
@@ -133,7 +114,6 @@ if (!window.__campbellBound) {
   window.__campbellBound = true;
   document.addEventListener('click', (ev) => {
     if (ev.target.closest('[data-nav]')) { ev.preventDefault(); toggleNav(); return; }
-    if (ev.target.closest('[data-notes]')) { ev.preventDefault(); document.documentElement.classList.toggle('notes'); return; }
     if (ev.target.closest('a[href]')) closeNav();
   });
   document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') closeNav(); });

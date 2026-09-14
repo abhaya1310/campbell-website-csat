@@ -12,10 +12,10 @@ import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
 const description =
   'A collection of extraordinary hospitality experiences, shaped for modern India. Six houses — Louve, Cosy Box, Toy Room, Ophelia, Meette and Dodicci.';
 ---
-<Programme title="Campbell India | The Houses" description={description}>
+<Programme title="Campbell India | Our Houses" description={description}>
   <section class="hero">
     <div class="hero-img">
-      <div class="px"><Image src={atmosphere} alt="" widths={[900, 1400, 2000]} sizes="100vw" loading="eager" fetchpriority="high" /></div>
+      <div class="px"><Image src={atmosphere} alt="" widths={[1200, 1800, 2400, 3000]} sizes="100vw" loading="eager" fetchpriority="high" /></div>
     </div>
     <div class="hero-in">
       <div class="eyebrow rv-i">Hospitality &#183; Culture &#183; Experience</div>
@@ -26,7 +26,7 @@ const description =
   </section>
 
   <section class="sec" id="the-house"><div class="wrap">
-    <SecHead n="&#8212;" title="The House" />
+    <SecHead n="&#8212;" title="Introduction" />
     <div class="split">
       <div><Rise tag="h2" cls="dsp-l" lines={['Six houses.', ['Infinite ways to', true], ['experience hospitality.', true]]} /></div>
       <div class="rv-i">
@@ -36,12 +36,12 @@ const description =
       </div>
     </div>
     <div class="plate" style="margin-top:clamp(48px,7vw,88px)">
-      <div class="px"><Image src={galleryLouve} alt="" widths={[900, 1400, 2000]} sizes="100vw" style="aspect-ratio:21/8" /></div>
+      <div class="px"><Image src={galleryLouve} alt="" widths={[1200, 1800, 2400, 3000]} sizes="100vw" style="aspect-ratio:21/8" /></div>
     </div>
   </div></section>
 
   <section class="sec" id="the-houses" style="padding-top:0;padding-bottom:0"><div class="wrap">
-    <SecHead n="01 &#8212; 06" title="The Houses" />
+    <SecHead n="01 &#8212; 06" title="Our Houses" />
     <div class="bill">{HOUSES.map((x) => <HouseRow house={x} />)}</div>
   </div></section>
 

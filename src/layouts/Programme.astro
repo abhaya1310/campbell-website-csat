@@ -12,6 +12,9 @@ import '../styles/programme.css';
 import { HOUSES } from '../data/houses';
 import { SITE, SITE_URL, EMAILS, SOCIALS, CITIES, FLAGSHIP, FORMSPREE_ID, GA_ID, OG_IMAGE } from '../config/site';
 import { Image } from 'astro:assets';
+import monogram from '../assets/brand/campbell-monogram.svg?raw';
+import wordmark from '../assets/brand/campbell-wordmark.svg?raw';
+import lockup from '../assets/brand/campbell-lockup.svg?raw';
 
 interface Props {
   title?: string;
@@ -124,20 +127,20 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
 
     <header class="mast onphoto" id="mast" data-house={h ? '1' : undefined}>
       <div class="mast-in">
-        <a href="/" class="logo">CAMPBELL<sup>&#174;</sup></a>
+        <a href="/" class="logo" aria-label="Campbell Group — home">
+          <span class="mark" set:html={monogram} />
+          <span class="word" set:html={wordmark} />
+        </a>
         <div class="mnav">
           {h ? (
             <>
               <span class="runorder hide-sm">HOUSE <b>{h.n}</b> / 06</span>
-              <button class="i-btn" data-notes aria-label="Design notes">i</button>
               <a href="/" class="back"><span class="ar">&#8592;</span> Back to Campbell India</a>
             </>
           ) : (
             <>
-              <a href="/about" class="hide-sm">The House</a>
-              <a href="/brands" class="hide-sm">The Houses</a>
+              <a href="/brands" class="hide-sm">Our Houses</a>
               <a href="/contact" class="hide-sm">Contact</a>
-              <button class="i-btn" data-notes aria-label="Design notes">i</button>
             </>
           )}
           <button class="navbtn" data-nav aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
@@ -157,9 +160,8 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
           </a>
         ))}
         <div class="nav-extra">
-          <a href="/about">The House</a><a href="/contact">Contact</a>
+          <a href="/about">About Campbell</a><a href="/contact">Contact</a>
         </div>
-        <div class="nav-note"><button class="i-btn" data-notes aria-label="Design notes">i</button> Design notes</div>
       </div>
     </div>
 
@@ -167,7 +169,7 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
 
     <footer class="foot">
       <div class="wrap">
-        <div class="logo">CAMPBELL<sup>&#174;</sup></div>
+        <div class="foot-mark" set:html={lockup} />
         <div class="foot-grid">
           <div>
             <div class="lede" style="color:#EDE6D9;max-width:26ch;font-size:1.35rem">Six houses, one standard of luxury.</div>
@@ -176,14 +178,14 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
             </p>
           </div>
           <div>
-            <h5>The Houses</h5>
+            <h5>Our Houses</h5>
             <ul>{HOUSES.map((x) => <li><a href={`/brands/${x.slug}`}>{x.name}</a></li>)}</ul>
           </div>
           <div>
             <h5>Campbell</h5>
             <ul>
-              <li><a href="/about">The House</a></li>
-              <li><a href="/brands">All houses</a></li>
+              <li><a href="/about">About Campbell</a></li>
+              <li><a href="/brands">Our Houses</a></li>
               <li><a href="/contact">Enquiries</a></li>
             </ul>
             {SOCIALS.some((s) => s.href) && (
