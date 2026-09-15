@@ -480,3 +480,12 @@ html.home .foot h5{color:#9A8A66}
    The wrapper now spans the hero, with 8% bleed so the parallax travel
    (at most 7%) never opens a gap at the top or bottom edge. */
 .hero-img>.px{position:absolute;inset:-8% 0}
+
+/* Locations live only in the footer now (ruled 2026-09-15). */
+.foot-grid{grid-template-columns:1.3fr 1fr 1.2fr .9fr}
+@media(max-width:1020px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+.foot-loc li{display:block;margin-bottom:14px;min-height:0}
+.foot-city{display:block;color:#F2EEE6;font-size:.9rem}
+.foot-cb{display:block;font-size:.72rem;letter-spacing:.08em;color:#9C9082;margin-top:3px;line-height:1.5}
+.foot--house .foot-cb{color:#B9A7A2}

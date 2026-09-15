@@ -4,7 +4,7 @@ import Programme from '../layouts/Programme.astro';
 import Rise from '../components/programme/Rise.astro';
 import SecHead from '../components/programme/SecHead.astro';
 import HouseRow from '../components/programme/HouseRow.astro';
-import { HOUSES, CITY_MAP, PILLARS, STANDARDS, PRESS } from '../data/houses';
+import { HOUSES, PRESS } from '../data/houses';
 import heroHome from '../assets/images/hero-home.jpg';
 import galleryLouve from '../assets/images/gallery-louve.jpg';
 import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
@@ -43,50 +43,6 @@ const description =
   <section class="sec" id="the-houses" style="padding-top:0;padding-bottom:0"><div class="wrap">
     <SecHead n="01 &#8212; 06" title="Our Brands" />
     <div class="bill">{HOUSES.map((x) => <HouseRow house={x} />)}</div>
-  </div></section>
-
-  {/* --- back matter: index --- */}
-  <section class="sec"><div class="wrap">
-    <SecHead n="&#8212;" title="Our World" />
-    <div class="split" style="margin-bottom:clamp(40px,5vw,64px)">
-      <div><Rise tag="h2" cls="dsp-m" lines={['From dining rooms', ['to dance floors.', true]]} /></div>
-      <div class="rv-i"><p class="body">Campbell exists across the full spectrum of contemporary hospitality.</p></div>
-    </div>
-    <div class="index">
-      {PILLARS.map(([name, copy], i) => (
-        <div class="idx rv-i">
-          <span class="fol">0{i + 1}</span>
-          <h4>{name}</h4>
-          <p>{copy}</p>
-        </div>
-      ))}
-    </div>
-  </div></section>
-
-  {/* --- back matter: the leaf, the page's one dark field --- */}
-  <section class="leaf" data-band="1"><div class="wrap">
-    <SecHead n="&#8212;" title="The Campbell Standard" />
-    <Rise tag="h2" cls="dsp-m" lines={['What brings every', ['house together?', true]]} />
-    <div class="tenets">
-      {STANDARDS.map(([name, copy]) => (
-        <div class="tenet rv-i">
-          <h4>{name}</h4>
-          <p>{copy}</p>
-        </div>
-      ))}
-    </div>
-  </div></section>
-
-  {/* --- back matter: where it plays --- */}
-  <section class="sec" id="locations"><div class="wrap">
-    <SecHead n="&#8212;" title="Where to find us" />
-    <div class="split" style="margin-bottom:44px">
-      <Rise tag="h2" cls="dsp-m" lines={['From Delhi,', ['outward.', true]]} />
-      <div></div>
-    </div>
-    <div class="cities rv-i">
-      {CITY_MAP.map(([city, houses]) => <div><div class="cn">{city}</div><div class="cc">{houses}</div></div>)}
-    </div>
   </div></section>
 
   {/* --- back matter: the notices --- */}

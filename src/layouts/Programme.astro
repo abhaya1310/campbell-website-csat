@@ -9,7 +9,7 @@
  */
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/programme.css';
-import { HOUSES } from '../data/houses';
+import { HOUSES, CITY_MAP } from '../data/houses';
 import { SITE, SITE_URL, EMAILS, SOCIALS, CITIES, FLAGSHIP, FORMSPREE_ID, GA_ID, OG_IMAGE } from '../config/site';
 import { Image } from 'astro:assets';
 import monogram from '../assets/brand/campbell-monogram.svg?raw';
@@ -181,12 +181,20 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
           <div>
             <div class="lede" style="color:#EDE6D9;max-width:26ch;font-size:1.35rem">Six houses, one standard of luxury.</div>
             <p class="foot-muted" style="margin-top:18px;font-size:.85rem;color:#8A8074;max-width:44ch">
-              {SITE.legalName} &#183; Founded {SITE.foundingYear} &#183; {CITIES.join(', ')}
+              {SITE.legalName} &#183; Founded {SITE.foundingYear}
             </p>
           </div>
           <div>
             <h5>Our Brands</h5>
             <ul>{HOUSES.map((x) => <li><a href={`/brands/${x.slug}`}>{x.name}</a></li>)}</ul>
+          </div>
+          <div>
+            <h5>Locations</h5>
+            <ul class="foot-loc">
+              {CITY_MAP.map(([city, brands]) => (
+                <li><span class="foot-city">{city}</span><span class="foot-cb">{brands}</span></li>
+              ))}
+            </ul>
           </div>
           <div>
             <h5>Campbell</h5>
