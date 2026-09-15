@@ -12,7 +12,7 @@ import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
 const description =
   'A collection of extraordinary hospitality experiences, shaped for modern India. Six houses — Louve, Cosy Box, Toy Room, Ophelia, Meette and Dodicci.';
 ---
-<Programme title="Campbell India | Our Houses" description={description}>
+<Programme title="Campbell India | Our Brands" description={description}>
   <section class="hero">
     <div class="hero-img">
       <div class="px"><Image src={atmosphere} alt="" widths={[1200, 1800, 2400, 3000]} sizes="100vw" loading="eager" fetchpriority="high" /></div>
@@ -41,7 +41,7 @@ const description =
   </div></section>
 
   <section class="sec" id="the-houses" style="padding-top:0;padding-bottom:0"><div class="wrap">
-    <SecHead n="01 &#8212; 06" title="Our Houses" />
+    <SecHead n="01 &#8212; 06" title="Our Brands" />
     <div class="bill">{HOUSES.map((x) => <HouseRow house={x} />)}</div>
   </div></section>
 

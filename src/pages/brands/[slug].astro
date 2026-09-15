@@ -39,6 +39,7 @@ const schema = h.schemaType
   : [];
 ---
 <Programme title={`${h.name} | Campbell India`} description={`${h.name} — ${h.category}, ${h.location}. ${h.body[0]}`} house={h.slug} jsonLd={schema}>
+  <div class="frame">
   <section class="hero" style={`--house:${h.ink}`}>
     {h.hero && (
       <div class="hero-img">
@@ -52,6 +53,7 @@ const schema = h.schemaType
     </div>
     <div class="hero-foot"><span>Campbell &#8212; House {h.n} of 06</span><span class="cue"></span></div>
   </section>
+  </div>
 
   <div style={`--house:${h.ink}`}>
     <section class="sec"><div class="wrap">
