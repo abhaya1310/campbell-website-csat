@@ -57,7 +57,7 @@ const schema = h.schemaType
 
   <div style={`--house:${h.ink}`}>
     <section class="sec"><div class="wrap">
-      <SecHead n="01" title="About" />
+      <SecHead title="About" />
       <div class="split">
         <div class="rv-i">
           <div class="hr-n num" style="font-size:clamp(3.2rem,6.5vw,5.6rem);opacity:.26;margin-bottom:6px">{h.n}</div>
@@ -72,7 +72,7 @@ const schema = h.schemaType
 
     {h.cuisine.length > 0 && (
       <section class="sec" style="padding-top:0"><div class="wrap">
-        <SecHead n="02" title="The Table" />
+        <SecHead title="The Table" />
         <div class="split">
           <div><Rise tag="h2" cls="dsp-m" lines={h.cuisine.map((c) => `${c}.`)} /></div>
           <div></div>
@@ -85,7 +85,7 @@ const schema = h.schemaType
 
   {h.gallery.length > 0 && (
     <section class="sec" style={`--house:${h.ink}`}><div class="wrap">
-      <SecHead n={h.cuisine.length ? '03' : '02'} title="The Room" />
+      <SecHead title="The Room" />
       <div class={h.gallery.length > 1 ? 'g2' : ''}>
         {h.gallery.map((g, k) => (
           <figure class="plate">

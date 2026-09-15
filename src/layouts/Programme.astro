@@ -123,7 +123,7 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
     <a href="#main-content" class="skip">Skip to content</a>
 
     <div class="prog" id="prog" transition:persist="prog"></div>
-    <div class="curtain" id="curtain" transition:persist="curtain"><div class="cn"></div></div>
+    <div class="curtain" id="curtain" transition:persist="curtain"><div class="cm" set:html={monogram} /><div class="cn"></div></div>
 
     <header class="mast onphoto" id="mast" data-house={h ? '1' : undefined}>
       <div class="mast-in">
@@ -133,10 +133,7 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
         </a>
         <div class="mnav">
           {h ? (
-            <>
-              <span class="runorder hide-sm">BRAND <b>{h.n}</b> / 06</span>
-              <a href="/" class="back"><span class="ar">&#8592;</span> Back to Campbell India</a>
-            </>
+            <span class="runorder hide-sm">BRAND <b>{h.n}</b> / 06</span>
           ) : (
             <>
               <a href="/brands" class="hide-sm">Our Brands</a>
@@ -169,17 +166,14 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
 
     <footer class={h ? "foot foot--house" : "foot"}>
       <div class="wrap">
-        {h ? (
-          <div class="foot-sign">
-            <div class="foot-mark" set:html={lockup} />
-            <p class="foot-house-line">{h.name} is one of six brands by <i>Campbell Group</i>.</p>
-          </div>
-        ) : (
-          <div class="foot-mark" set:html={lockup} />
-        )}
         <div class="foot-grid">
           <div>
-            <div class="lede" style="color:#EDE6D9;max-width:26ch;font-size:1.35rem">Six houses, one standard of luxury.</div>
+            <div class="foot-mark" set:html={lockup} />
+            {h ? (
+              <p class="foot-house-line">{h.name} is one of six brands by <i>Campbell Group</i>.</p>
+            ) : (
+              <div class="lede" style="color:#EDE6D9;max-width:26ch;font-size:1.35rem">Six houses, one standard of luxury.</div>
+            )}
             <p class="foot-muted" style="margin-top:18px;font-size:.85rem;color:#8A8074;max-width:44ch">
               {SITE.legalName} &#183; Founded {SITE.foundingYear}
             </p>

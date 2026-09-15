@@ -95,7 +95,9 @@ async function curtainIn(to) {
   if (!c || RM.matches) return;
   const meta = (window.__CAMPBELL_INK || {})[to.replace(/\/$/, '')] || {};
   c.style.background = meta.ink || '#16130F';
-  c.querySelector('.cn').textContent = meta.name || 'Campbell';
+  // The curtain carries Campbell's mark; the brand's name sits under it. A
+  // group page has no name to add — the mark alone is the whole statement.
+  c.querySelector('.cn').textContent = meta.name || '';
   c.classList.add('lit');
   await c.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }],
     { duration: 560, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' }).finished;

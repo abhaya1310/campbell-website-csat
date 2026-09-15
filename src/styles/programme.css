@@ -473,6 +473,20 @@ html.home .foot h5{color:#9A8A66}
 .foot-house-line{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.8rem);line-height:1.3;max-width:28ch;color:#F2EEE6}
 .foot-house-line i{color:#E3C88F}
 
+/* The footer sign-off (ruled 2026-09-15): the lockup no longer takes a row
+   of its own above the grid — it heads the first column, over the line and
+   the small print, so the footer is one block, not a masthead plus a grid. */
+.foot-grid{padding-top:0;margin-top:0;border-top:0}
+.foot-grid .foot-mark{width:clamp(96px,9vw,116px);margin-bottom:clamp(22px,2.6vw,30px)}
+
+/* The curtain carries Campbell's mark with the brand's name beneath it. */
+.curtain{flex-direction:column;gap:clamp(18px,2.6vw,30px)}
+.curtain .cm{width:clamp(64px,8vw,104px);color:rgba(255,255,255,.92);opacity:0;transform:translateY(10px)}
+.curtain .cm svg{display:block;width:100%;height:auto}
+.curtain.lit .cm{opacity:1;transform:none;transition:opacity .42s ease .08s,transform .6s var(--e-expo,cubic-bezier(.16,1,.3,1)) .08s}
+.curtain .cn{font-size:clamp(2rem,6vw,4.6rem)}
+.curtain .cn:empty{display:none}
+
 /* Hero photographs sit inside the parallax wrapper .px, which had no height,
    so "height:100%" on the image resolved against nothing and the photo fell
    back to its own aspect ratio. On a wide screen that happened to cover the

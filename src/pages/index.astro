@@ -4,10 +4,9 @@ import Programme from '../layouts/Programme.astro';
 import Rise from '../components/programme/Rise.astro';
 import SecHead from '../components/programme/SecHead.astro';
 import HouseRow from '../components/programme/HouseRow.astro';
-import { HOUSES, PRESS } from '../data/houses';
+import { HOUSES } from '../data/houses';
 import heroHome from '../assets/images/hero-home.jpg';
 import galleryLouve from '../assets/images/gallery-louve.jpg';
-import galleryCosybox from '../assets/images/gallery-cosybox.jpg';
 
 const description =
   'A collection of extraordinary hospitality experiences, shaped for modern India. Six houses — Louve, Cosy Box, Toy Room, Ophelia, Meette and Dodicci.';
@@ -26,7 +25,7 @@ const description =
   </section>
 
   <section class="sec" id="the-house"><div class="wrap">
-    <SecHead n="&#8212;" title="Introduction" />
+    <SecHead title="Introduction" />
     <div class="split">
       <div><Rise tag="h2" cls="dsp-l" lines={['Six houses.', ['Infinite ways to', true], ['experience hospitality.', true]]} /></div>
       <div class="rv-i">
@@ -41,39 +40,8 @@ const description =
   </div></section>
 
   <section class="sec" id="the-houses" style="padding-top:0;padding-bottom:0"><div class="wrap">
-    <SecHead n="01 &#8212; 06" title="Our Brands" />
+    <SecHead title="Our Brands" />
     <div class="bill">{HOUSES.map((x) => <HouseRow house={x} />)}</div>
-  </div></section>
-
-  {/* --- back matter: the notices --- */}
-  <section class="sec" style="padding-top:0"><div class="wrap">
-    <SecHead n="&#8212;" title="In Good Company" />
-    <div class="notices">
-      {PRESS.map(([name, detail]) => (
-        <div class="notice rv-i">
-          <div class="cite">{name}</div>
-          <div class="src">{detail}</div>
-        </div>
-      ))}
-    </div>
-  </div></section>
-
-  {/* --- back matter: the appeal --- */}
-  <section class="sec" style="padding-top:0"><div class="wrap">
-    <SecHead n="&#8212;" title="Partnerships" />
-    <div class="appeal">
-      <figure class="plate">
-        <Image src={galleryCosybox} alt="" widths={[600, 900, 1200]} sizes="(max-width:860px) 92vw, 44vw" style="aspect-ratio:4/3" />
-      </figure>
-      <div class="rv-i">
-        <Rise tag="h2" cls="dsp-m" lines={["Let's create something", ['worth talking about.', true]]} />
-        <p class="body" style="margin-top:26px">From private dining and celebrations to brand collaborations, cultural events and media partnerships, Campbell works with brands and people who share a passion for creating memorable experiences.</p>
-        <div class="tags">
-          {['Private Events', 'Brand Collaborations', 'Media & Press', 'Partnerships'].map((t) => <span class="pill">{t}</span>)}
-        </div>
-        <p><a href="/contact" class="enter">Start a conversation <span class="ar">&#8594;</span></a></p>
-      </div>
-    </div>
   </div></section>
 
   {/* --- back matter: the colophon --- */}
