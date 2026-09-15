@@ -51,7 +51,7 @@ const schema = h.schemaType
       <Rise tag="h1" cls="dsp-xl" lines={[`${h.name}.`]} />
       <p class="hero-sub rv-i">{h.tagline}</p>
     </div>
-    <div class="hero-foot"><span>Campbell &#8212; House {h.n} of 06</span><span class="cue"></span></div>
+    <div class="hero-foot"><span>Campbell &#8212; Brand {h.n} of 06</span><span class="cue"></span></div>
   </section>
   </div>
 
@@ -81,7 +81,7 @@ const schema = h.schemaType
     )}
   </div>
 
-  <Band quote={h.pull} attr={`${h.name} &#183; House ${h.n}`} ink={h.ink} />
+  <Band quote={h.pull} attr={`${h.name} &#183; Brand ${h.n}`} ink={h.ink} />
 
   {h.gallery.length > 0 && (
     <section class="sec" style={`--house:${h.ink}`}><div class="wrap">
@@ -97,7 +97,7 @@ const schema = h.schemaType
   )}
 
   <nav class="nextprod" aria-label="Other houses">
-    <a href={`/brands/${prev.slug}`}><div class="k">&#8592; House {prev.n}</div><div class="v">{prev.name}</div></a>
-    <a href={`/brands/${next.slug}`} class="r"><div class="k">House {next.n} &#8594;</div><div class="v">{next.name}</div></a>
+    <a href={`/brands/${prev.slug}`}><div class="k">&#8592; Brand {prev.n}</div><div class="v">{prev.name}</div></a>
+    <a href={`/brands/${next.slug}`} class="r"><div class="k">Brand {next.n} &#8594;</div><div class="v">{next.name}</div></a>
   </nav>
 </Programme>
