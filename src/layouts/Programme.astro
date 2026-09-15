@@ -132,14 +132,8 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
           <span class="word" set:html={wordmark} />
         </a>
         <div class="mnav">
-          {h ? (
-            <span class="runorder hide-sm">BRAND <b>{h.n}</b> / 06</span>
-          ) : (
-            <>
-              <a href="/brands" class="hide-sm">Our Brands</a>
-              <a href="/contact" class="hide-sm">Contact</a>
-            </>
-          )}
+          <a href="/brands" class="hide-sm">Our Brands</a>
+          <a href="/contact" class="hide-sm">Contact</a>
           <button class="navbtn" data-nav aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
         </div>
       </div>
