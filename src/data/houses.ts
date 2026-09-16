@@ -41,6 +41,8 @@ export interface House {
   hero: ImageMetadata | null;
   gallery: ImageMetadata[];
   schemaType: string | null;
+  /** Footer sign-off. Absent = the standard "one of six brands" endorsement. */
+  signoff?: string;
   rejected?: string;
   soon?: boolean;
 }
@@ -61,7 +63,7 @@ export const HOUSES: House[] = [
   {
     slug: 'cosy-box', n: '02', name: 'Cosy Box',
     category: 'Cinematic Fine Dining', location: 'Delhi · Gurugram · Mumbai · More', ink: '#1F3A5F',
-    tagline: 'The best is yet to come.',
+    tagline: 'Cannes energy. Indian nights.', signoff: 'The best is yet to come.',
     pull: 'A cinematic world of global cuisine, cocktails, music and late-night energy.',
     tags: ['Mediterranean', 'Italian', 'Asian'],
     cuisine: ['Mediterranean', 'Italian', 'Asian'],
@@ -89,7 +91,7 @@ export const HOUSES: House[] = [
   {
     slug: 'ophelia', n: '04', name: 'Ophelia',
     category: 'Restaurant & Bar', location: 'New Delhi · The Ashok, Chanakyapuri', ink: '#5C3A52',
-    tagline: 'Oh baby it’s a wild world.',
+    tagline: 'An evening with a different point of view.', signoff: 'Oh baby it’s a wild world.',
     pull: 'A restaurant by day. A social destination by night.',
     tags: ['Turkish', 'Italian', 'Innovative Cocktails'],
     cuisine: ['Turkish', 'Italian'],
@@ -115,7 +117,7 @@ export const HOUSES: House[] = [
   {
     slug: 'dodicci', n: '06', name: 'Dodicci',
     category: 'The Newest House', location: 'New Delhi · The Ashok', ink: '#9A4A22',
-    tagline: 'La Casa Europa',
+    tagline: 'A new chapter in dining.', signoff: 'La Casa Europa',
     pull: 'A new expression of dining at The Ashok, Chanakyapuri.',
     tags: ['Now Open'],
     cuisine: [],
