@@ -164,8 +164,8 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
           <div>
             <div class="foot-mark" set:html={lockup} />
             {h ? (
-              h.signoff
-                ? <p class="foot-house-line">{h.signoff}</p>
+              h.signsOffWithTagline
+                ? <p class="foot-house-line">{h.tagline}</p>
                 : <p class="foot-house-line">{h.name} is one of six brands by <i>Campbell Group</i>.</p>
             ) : (
               <div class="lede" style="color:#EDE6D9;max-width:26ch;font-size:1.35rem">Six houses, one standard of luxury.</div>
