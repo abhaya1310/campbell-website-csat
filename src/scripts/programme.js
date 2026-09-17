@@ -28,9 +28,12 @@ function frame() {
     progEl.style.transform = 'scaleX(' + (d > 0 ? Math.min(1, y / d) : 0) + ')';
   }
   if (mastEl) {
+    // `onphoto` means "a photograph is behind me, so go ivory". Only a page
+    // that actually opens on one may claim it; otherwise the bar would be
+    // ivory on ivory paper and invisible until the first scroll.
     const solid = y > vh - 90;
     mastEl.classList.toggle('solid', solid);
-    mastEl.classList.toggle('onphoto', !solid);
+    mastEl.classList.toggle('onphoto', mastEl.dataset.photohero === '1' && !solid);
   }
   lastY = y;
   if (!RM.matches) {

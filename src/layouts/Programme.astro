@@ -21,9 +21,16 @@ interface Props {
   description?: string;
   /** Slug of the house being shown, when this is a house page. */
   house?: string;
+  /**
+   * Does a full-bleed photograph sit behind the masthead at the top of this
+   * page? The masthead turns ivory to read on a photograph, so a page that
+   * opens on paper must say so or the bar is ivory on ivory — invisible until
+   * the reader scrolls. (Found on Our Brands and Enquiries, 2026-09-17.)
+   */
+  photoHero?: boolean;
   jsonLd?: Record<string, unknown>[];
 }
-const { title = `${SITE.name} | ${SITE.tagline}`, description = SITE.description, house, jsonLd = [] } = Astro.props;
+const { title = `${SITE.name} | ${SITE.tagline}`, description = SITE.description, house, photoHero = true, jsonLd = [] } = Astro.props;
 
 const h = house ? HOUSES.find((x) => x.slug === house) : undefined;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE_URL).href.replace(/(.+)\/$/, '$1');
@@ -125,7 +132,7 @@ const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.
     <div class="prog" id="prog" transition:persist="prog"></div>
     <div class="curtain" id="curtain" transition:persist="curtain"><div class="cm" set:html={monogram} /><div class="cn"></div></div>
 
-    <header class="mast onphoto" id="mast" data-house={h ? '1' : undefined}>
+    <header class={photoHero ? 'mast onphoto' : 'mast'} id="mast" data-house={h ? '1' : undefined} data-photohero={photoHero ? '1' : undefined}>
       <div class="mast-in">
         <a href="/" class="logo" aria-label="Campbell Group — home">
           <span class="mark" set:html={monogram} />
