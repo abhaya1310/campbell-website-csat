@@ -199,7 +199,7 @@ html.rv .fig:hover img,html.rv a.fig:hover img{transform:scale(1.045);transition
 
 /* --- ink curtain page transition --- */
 .curtain{position:fixed;inset:0;z-index:200;transform:translateY(100%);pointer-events:none;display:flex;align-items:center;justify-content:center;will-change:transform}
-.curtain .cn{font-family:var(--serif);font-size:clamp(2.6rem,9vw,7rem);color:rgba(255,255,255,.92);letter-spacing:-.02em;opacity:0}
+.curtain .cn{font-family:var(--serif);font-size:clamp(2.6rem,9vw,7rem);color:inherit;letter-spacing:-.02em;opacity:0}
 .curtain.lit .cn{opacity:1;transition:opacity .42s ease .12s}
 
 /* --- scroll progress rail --- */
@@ -481,7 +481,7 @@ html.home .foot h5{color:#9A8A66}
 
 /* The curtain carries Campbell's mark with the brand's name beneath it. */
 .curtain{flex-direction:column;gap:clamp(18px,2.6vw,30px)}
-.curtain .cm{width:clamp(64px,8vw,104px);color:rgba(255,255,255,.92);opacity:0;transform:translateY(10px)}
+.curtain .cm{width:clamp(64px,8vw,104px);color:inherit;opacity:0;transform:translateY(10px)}
 .curtain .cm svg{display:block;width:100%;height:auto}
 .curtain.lit .cm{opacity:1;transform:none;transition:opacity .42s ease .08s,transform .6s var(--e-expo,cubic-bezier(.16,1,.3,1)) .08s}
 .curtain .cn{font-size:clamp(2rem,6vw,4.6rem)}

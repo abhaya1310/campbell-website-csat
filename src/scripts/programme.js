@@ -98,6 +98,7 @@ async function curtainIn(to) {
   if (!c || RM.matches) return;
   const meta = (window.__CAMPBELL_INK || {})[to.replace(/\/$/, '')] || {};
   c.style.background = meta.ink || '#16130F';
+  c.style.color = meta.fg || '#F2EEE6';
   // The curtain carries Campbell's mark; the brand's name sits under it. A
   // group page has no name to add — the mark alone is the whole statement.
   c.querySelector('.cn').textContent = meta.name || '';

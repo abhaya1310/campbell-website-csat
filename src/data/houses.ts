@@ -44,13 +44,16 @@ export interface House {
   /** True = sign the page off with this brand's own tagline instead of the
       standard "one of six brands by Campbell Group" endorsement. */
   signsOffWithTagline?: boolean;
+  /** The brand transition screen's own colours: ground and the mark/name on it.
+      Separate from `ink`, which stays the brand's accent everywhere else. */
+  curtain: { bg: string; fg: string };
   rejected?: string;
   soon?: boolean;
 }
 
 export const HOUSES: House[] = [
   {
-    slug: 'louve', n: '01', name: 'Louve',
+    slug: 'louve', curtain: { bg: '#0B5F6B', fg: '#EAF7F7' }, n: '01', name: 'Louve',
     category: 'The Flagship', location: 'New Delhi · Khan Market', ink: '#7B2233',
     tagline: 'European dining, reimagined.',
     pull: 'Its language is rooted in classic architecture, refined interiors, thoughtful food and an elevated bar experience.',
@@ -62,7 +65,7 @@ export const HOUSES: House[] = [
     hero: brandLouve, gallery: [galleryDish], schemaType: 'Restaurant',
   },
   {
-    slug: 'cosy-box', n: '02', name: 'Cosy Box',
+    slug: 'cosy-box', curtain: { bg: '#343A22', fg: '#F0EEE0' }, n: '02', name: 'Cosy Box',
     category: 'Cinematic Fine Dining', location: 'Delhi · Gurugram · Mumbai · More', ink: '#1F3A5F',
     tagline: 'The best is yet to come.', signsOffWithTagline: true,
     pull: 'A cinematic world of global cuisine, cocktails, music and late-night energy.',
@@ -75,7 +78,7 @@ export const HOUSES: House[] = [
     hero: brandCosybox, gallery: [galleryCosybox], schemaType: 'Restaurant',
   },
   {
-    slug: 'toy-room', n: '03', name: 'Toy Room',
+    slug: 'toy-room', curtain: { bg: '#0A0A0C', fg: '#A98CFF' }, n: '03', name: 'Toy Room',
     category: 'Globally Recognised Nightlife', location: 'Delhi · Mumbai', ink: '#4A2E6B',
     tagline: 'Play after dark.',
     pull: 'Built around music, energy and a crowd that comes to be seen.',
@@ -90,7 +93,7 @@ export const HOUSES: House[] = [
       'The only second Toy Room image on file is a phone snapshot of guests with a mascot. It is not editorial photography and is deliberately not used.',
   },
   {
-    slug: 'ophelia', n: '04', name: 'Ophelia',
+    slug: 'ophelia', curtain: { bg: '#46302A', fg: '#F2E7DF' }, n: '04', name: 'Ophelia',
     category: 'Restaurant & Bar', location: 'New Delhi · The Ashok, Chanakyapuri', ink: '#5C3A52',
     tagline: 'Oh baby it’s a wild world.', signsOffWithTagline: true,
     pull: 'A restaurant by day. A social destination by night.',
@@ -103,7 +106,7 @@ export const HOUSES: House[] = [
     hero: galleryOphelia, gallery: [brandOphelia], schemaType: 'Restaurant',
   },
   {
-    slug: 'meette', n: '05', name: 'Meette',
+    slug: 'meette', curtain: { bg: '#F1E4E4', fg: '#4A3B3E' }, n: '05', name: 'Meette',
     category: 'Atelier Patisserie', location: 'New Delhi', ink: '#4B5D3A',
     tagline: 'Handcrafted, from the heart.',
     pull: 'Every creation is made to feel personal.',
@@ -116,7 +119,7 @@ export const HOUSES: House[] = [
     hero: brandMeette, gallery: [galleryMeette], schemaType: 'Bakery',
   },
   {
-    slug: 'dodicci', n: '06', name: 'Dodicci',
+    slug: 'dodicci', curtain: { bg: '#97401C', fg: '#FBEDE4' }, n: '06', name: 'Dodicci',
     category: 'The Newest House', location: 'New Delhi · The Ashok', ink: '#9A4A22',
     tagline: 'La Casa Europa', signsOffWithTagline: true,
     pull: 'A new expression of dining at The Ashok, Chanakyapuri.',

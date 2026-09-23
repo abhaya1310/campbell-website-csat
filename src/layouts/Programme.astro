@@ -59,7 +59,7 @@ const organizationSchema = {
 const schemas = [organizationSchema, ...jsonLd];
 
 /** slug -> {ink,name}: lets the curtain take the target house's colour. */
-const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.ink, name: x.name }]));
+const INK = Object.fromEntries(HOUSES.map((x) => [`/brands/${x.slug}`, { ink: x.curtain.bg, fg: x.curtain.fg, name: x.name }]));
 ---
 
 <!DOCTYPE html>
