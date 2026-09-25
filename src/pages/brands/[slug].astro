@@ -81,7 +81,7 @@ const schema = h.schemaType
     )}
   </div>
 
-  <Band quote={h.pull} attr={`${h.name} &#183; Brand ${h.n}`} ink={h.ink} />
+  <Band quote={h.pull} attr={`${h.name} &#183; Brand ${h.n}`} ink={h.curtain.bg} fg={h.curtain.fg} />
 
   {h.gallery.length > 0 && (
     <section class="sec" style={`--house:${h.ink}`}><div class="wrap">

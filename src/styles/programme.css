@@ -266,7 +266,7 @@ html.navopen .nav-row:nth-child(6){transition-delay:.36s}
 .band{background:var(--house);color:#F6F2EA;padding-block:clamp(86px,13vw,168px);position:relative;overflow:hidden}
 .band .q{font-family:var(--serif);font-size:clamp(1.7rem,4.4vw,3.6rem);line-height:1.14;max-width:22ch;letter-spacing:-.012em}
 .band .attr{margin-top:clamp(22px,3vw,34px);font-size:.625rem;letter-spacing:.24em;text-transform:uppercase;opacity:.68}
-.band::after{content:"";position:absolute;right:calc(var(--gut)*-.2);bottom:-14%;width:min(46vw,520px);aspect-ratio:1;border:1px solid rgba(246,242,234,.14);border-radius:50%;pointer-events:none}
+.band::after{content:"";position:absolute;right:calc(var(--gut)*-.2);bottom:-14%;width:min(46vw,520px);aspect-ratio:1;border:1px solid color-mix(in srgb,currentColor 16%,transparent);border-radius:50%;pointer-events:none}
 
 /* ================= DEVICE-AGNOSTIC PASS ================= */
 /* 1. Touch-target floor. Visual size unchanged; the HIT area grows. */

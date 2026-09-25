@@ -5,11 +5,11 @@
  * invisible at page scale, this is not.
  */
 import Rise from './Rise.astro';
-interface Props { quote: string; attr: string; ink?: string }
-const { quote, attr, ink } = Astro.props;
+interface Props { quote: string; attr: string; ink?: string; fg?: string }
+const { quote, attr, ink, fg } = Astro.props;
 const lines = quote.split(/(?<=[,.]) /).slice(0, 4);
 ---
-<section class="band" data-band="1" style={ink ? `--house:${ink}` : undefined}>
+<section class="band" data-band="1" style={[ink && `--house:${ink}`, fg && `color:${fg}`].filter(Boolean).join(';') || undefined}>
   <div class="wrap">
     <Rise tag="p" cls="q" lines={lines} />
     <div class="attr rv-i" set:html={attr} />
