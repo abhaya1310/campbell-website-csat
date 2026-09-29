@@ -43,7 +43,7 @@ const schema = h.schemaType
   <section class="hero" style={`--house:${h.ink}`}>
     {h.hero && (
       <div class="hero-img">
-        <div class="px"><Image src={h.hero} alt={`${h.name}, ${h.location}`} widths={[1200, 1800, 2400, 3000]} sizes="100vw" loading="eager" fetchpriority="high" /></div>
+        <div class="px"><Image src={h.hero} alt={`${h.name}, ${h.location}`} widths={[1200, 1800, 2400, 3000]} sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" loading="eager" fetchpriority="high" /></div>
       </div>
     )}
     <div class="hero-in">
